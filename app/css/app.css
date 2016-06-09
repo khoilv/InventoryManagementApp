@@ -1,0 +1,87 @@
+body, p, a, input, textarea, span, select {
+    font-size: 14px;
+    color: #333;
+    font-weight:400;
+    -webkit-text-size-adjust: 100%;
+    max-height: 999999px;
+}
+p{
+    margin: 0 0 0 0 !important;
+}
+img {
+    border: none;
+    max-width: 100%;
+    height: auto;
+}
+a img:hover{
+    opacity: 0.8;
+    transition:all ease 0.3s;
+}
+ul, li {
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+}
+input, select {
+    vertical-align: middle;
+}
+button {
+    border: none;
+    cursor: pointer;
+}
+ul{
+    list-style:none;
+}
+a, a:hover{
+    text-decoration:none !important;
+}
+
+.mt50{
+    margin-top: 50px;
+}
+.title{
+    border-bottom:1px solid #ccc;
+    padding-bottom: 10px;
+}
+.sidebar li{
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+.img-logo{
+    padding-top:5px;
+    padding-bottom:5px;
+    border:1px solid #ccc;
+    border-radius: 5px;
+}
+.img-logo img{
+    max-width: 100%;
+    margin:0 auto;
+    display: block;
+}
+.price{
+    color: #d43f3a;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top:7px !important;
+}
+.vendor-name{
+    font-weight: bold;
+    margin-top:5px;
+    display: inline-block;
+}
+
+.search-filter{
+    margin-top: 20px;
+}
+.search-filter li{
+    margin-bottom: 15px;
+}
+.btn-list li{
+    float: left;
+    margin-left: 15px;
+    margin-top: 20px;
+}
+.table{
+    margin-top: 30px;
+}

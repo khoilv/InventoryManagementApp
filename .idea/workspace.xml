@@ -2,39 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db49df35-445e-45ab-988d-2152e26b9225" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/favicon.ico" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/logo/logo1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/logo/logo2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/logo/logo4.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/logo/logo5.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/logo/logo6.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/product/p-img1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/product/p-img2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/product/p-img3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/img/product/p-img4.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/InventoryManagementApp.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/css/app.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/js/app.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/js/controllers.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/js/directives.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/js/filters.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/js/services.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/vendor/angular-indexed-db_1.1.4/angular-indexed-db.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/vendor/angular-ui-bootstrap_1.3.3/ui-bootstrap-tpls.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/vendor/angular-ui-bootstrap_1.3.3/ui-bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/vendor/angularjs_1.4.9/angular-animate.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/vendor/angularjs_1.4.9/angular-route.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/vendor/angularjs_1.4.9/angular-touch.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/vendor/angularjs_1.4.9/angular.min.js" />
     </list>
     <ignored path="InventoryManagementApp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -239,42 +207,6 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="InventoryManagementApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="InventoryManagementApp" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="InventoryManagementApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="InventoryManagementApp" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -352,12 +284,20 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1465454854332</updated>
-      <workItem from="1465454855595" duration="14269000" />
+      <workItem from="1465454855595" duration="14396000" />
     </task>
+    <task id="LOCAL-00001" summary="Create application structure">
+      <created>1465494447775</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1465494447775</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14269000" />
+    <option name="totallyTimeSpent" value="14396000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1911" y="-9" width="2578" height="1408" extended-state="6" />
@@ -384,6 +324,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Create application structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create application structure" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />

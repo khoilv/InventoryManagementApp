@@ -1,7 +1,5 @@
 'use strict';
 
-'use strict';
-
 (function (window, angular) {
 
     // Declare app level module which depends on views, and components
@@ -61,6 +59,5 @@
                 });
         }
     ]);
-
 
 })(window, window.angular);

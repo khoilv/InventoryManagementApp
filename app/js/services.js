@@ -80,4 +80,8 @@
         }
     ]);
 
+    imServices.factory('utilService', [function () {
+
+    }]);
+
 })(window, window.angular);

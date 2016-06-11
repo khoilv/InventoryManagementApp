@@ -4,7 +4,17 @@
 
     var imControllers = angular.module('imControllers', []);
 
-    imControllers.controller('appCtrl', [
+    /**
+     * Application controller
+     */
+    imControllers.controller('appCtrl', ['$scope', function ($scope) {
+
+    }]);
+
+    /**
+     * Home controller
+     */
+    imControllers.controller('homeCtrl', [
         '$scope',
         'dbService',
         'OBJECT_STORE_NAME_PRODUCT',

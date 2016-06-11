@@ -17,7 +17,7 @@
 <body>
 <div data-ng-app="imApp" data-ng-controller="appCtrl">
     <div data-ng-include="'partials/common/header.html'"></div>
-    <div data-ng-include="'partials/home/home.html'"></div>
+    <div data-ng-controller="homeCtrl" data-ng-include="'partials/home/home.html'"></div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>

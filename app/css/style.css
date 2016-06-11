@@ -1,153 +1,187 @@
 body, p, a, input, textarea, span, select {
     font-size: 14px;
     color: #333;
-    font-weight:400;
+    font-weight: 400;
     -webkit-text-size-adjust: 100%;
     max-height: 999999px;
 }
-p{
+
+p {
     margin: 0 0 0 0 !important;
 }
+
 img {
     border: none;
     max-width: 100%;
     height: auto;
 }
-a img:hover{
+
+a img:hover {
     opacity: 0.8;
-    transition:all ease 0.3s;
+    transition: all ease 0.3s;
 }
+
 ul, li {
     margin: 0 auto;
     padding: 0;
     list-style: none;
 }
+
 input, select {
     vertical-align: middle;
 }
+
 button {
     border: none;
     cursor: pointer;
 }
-ul{
-    list-style:none;
-}
-a, a:hover{
-    text-decoration:none !important;
+
+ul {
+    list-style: none;
 }
 
-.mt30{
+a, a:hover {
+    text-decoration: none !important;
+}
+
+.mt30 {
     margin-top: 30px;
 }
-.mt5{
+
+.mt5 {
     margin-top: 5px !important;
 }
-.pr0{
+
+.pr0 {
     padding-right: 0;
 }
-header{
+
+header {
     text-align: center;
 }
-header h2{
+
+header h2 {
     margin-left: 15px;
     color: #555;
 }
+
 .btn-warning,
-.btn-success{
+.btn-success {
     color: #fff;
     display: inline-block;
-    margin:15px;
+    margin: 15px;
 }
-header{
-    border-top:1px solid #ccc;
-    border-bottom:1px solid #ccc;
+
+header {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
 }
-nav li{
+
+nav li {
     float: left;
 }
-nav li span{
+
+nav li span {
     display: block;
     text-align: center;
 }
-nav li a{
-    padding:15px;
+
+nav li a {
+    padding: 15px;
     display: block;
     border-left: 1px solid #ccc;
 }
-nav li:hover a, nav li.active a{
+
+nav li:hover a, nav li.active a {
     transition: all ease 0.3s;
     background-color: #2aabd2;
 }
-nav li:hover a span, nav li.active a span{
+
+nav li:hover a span, nav li.active a span {
     color: #fff;
 }
-.sidebar{
+
+.sidebar {
     margin-top: 55px;
 }
-.sidebar li{
+
+.sidebar li {
     margin-bottom: 20px;
     padding-bottom: 10px;
     border-bottom: 1px solid #ccc;
 }
-.img-logo{
-    padding-top:5px;
-    padding-bottom:5px;
-    border:1px solid #ccc;
+
+.img-logo {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 1px solid #ccc;
     border-radius: 5px;
 }
-.img-logo img{
+
+.img-logo img {
     max-width: 100%;
-    margin:0 auto;
+    margin: 0 auto;
     display: block;
 }
-.price{
+
+.price {
     color: #d43f3a;
     font-weight: bold;
     font-size: 20px;
-    margin-top:7px !important;
+    margin-top: 7px !important;
 }
-.vendor-name{
+
+.vendor-name {
     font-weight: bold;
-    margin-top:5px;
+    margin-top: 5px;
     display: inline-block;
 }
 
-.search-filter{
+.search-filter {
     margin-top: 20px;
 }
-.search-filter li{
+
+.search-filter li {
     margin-bottom: 15px;
 }
-.btn-list li{
+
+.btn-list li {
     float: left;
     margin-left: 15px;
     margin-top: 20px;
 }
-.table{
+
+.table {
     margin-top: 20px;
 }
+
 .table,
 .table tr,
 .table td,
-.table th{
+.table th {
     border-collapse: collapse;
-    border:1px solid #ccc;
+    border: 1px solid #ccc;
 }
-.table tr td:nth-child(9){
+
+.table tr td:nth-child(9) {
     width: 12%;
 }
-.table thead{
+
+.table thead {
     background-color: #2aabd2;
 }
-.table thead th{
+
+.table thead th {
     text-align: center;
     padding-bottom: 13px !important;
 }
-.table thead th a{
+
+.table thead th a {
     color: #fff;
 }
-table .glyphicon{
-    margin:0;
+
+table .glyphicon {
+    margin: 0;
     padding: 0;
     line-height: 8px;
     display: block !important;

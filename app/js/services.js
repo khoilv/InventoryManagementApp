@@ -60,26 +60,22 @@
                 });
             };
 
-            var getLatestProducts = function (callback) {
-                $indexedDB.openStore(OBJECT_STORE_NAME_PRODUCT, function (products) {
-                    var latestProducts = [];
-                    var find = products.query().$index("created_date_idx").$desc(false);
-                    products.each(find).then(function (e) {
-                        latestProducts.push(e);
+            var getLatestItems = function (callback) {
+                $indexedDB.openStore(OBJECT_STORE_NAME_PRODUCT, function (store) {
+                    var find = store.query().$index("created_date_idx").$desc(false);
+                    store.findWhere(find).then(function (e) {
+                        if (Array.isArray(e) && e.length > 0) {
+                            if (e.length > 5) e = e.slice(0, 5);
+                            if (typeof callback === 'function') callback(e);
+                        }
                     });
-                    if (latestProducts.length > 5) {
-                        latestProducts = latestProducts.slice(0, 5);
-                    }
-                    if (typeof callback === 'function') {
-                        callback(latestProducts);
-                    }
                 });
             };
 
             return {
                 initDb: initDb,
                 getAll: getAll,
-                getLatestItems: getLatestProducts
+                getLatestItems: getLatestItems
             }
         }
     ]);

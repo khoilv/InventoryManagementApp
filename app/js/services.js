@@ -65,12 +65,8 @@
                     var find = store.query().$index("created_date_idx").$desc(false);
                     store.findWhere(find).then(function (e) {
                         if (Array.isArray(e) && e.length > 0) {
-                            if (e.length > 5) {
-                                e = e.slice(0, 5);
-                            }
-                            if (typeof callback === 'function') {
-                                callback(e);
-                            }
+                            if (e.length > 5) e = e.slice(0, 5);
+                            if (typeof callback === 'function') callback(e);
                         }
                     });
                 });

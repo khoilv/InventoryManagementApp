@@ -6,20 +6,15 @@
 
     imControllers.controller('appCtrl', [
         '$scope',
-        '$indexedDB',
-        function ($scope, $indexedDB) {
-            var initDb = function () {
-                var addToTypes = [{"name": "Phone"}, {"name": "Tablet"}, {"name": "Laptop"}];
-                $indexedDB.openStore('type', function (store) {
-                    store.clear().then(function () {});
-                    store.insert(addToTypes).then(function (e) {});
-                    store.getAll().then(function (types) {
-                        console.log(types);
-                    });
-                });
-            };
-            
-            initDb();
+        'dbService',
+        'OBJECT_STORE_NAME_PRODUCT',
+        'OBJECT_STORE_NAME_VENDOR',
+        'OBJECT_STORE_NAME_TYPE',
+        function ($scope, dbService, OBJECT_STORE_NAME_PRODUCT, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
+            dbService.initDb();
+            dbService.getAll(OBJECT_STORE_NAME_TYPE, function (data) {
+                console.log(data);
+            });
         }
     ]);
 

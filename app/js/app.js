@@ -7,7 +7,8 @@
         'ngRoute',
         'indexedDB',
         'ui.bootstrap',
-        'imControllers'
+        'imControllers',
+        'imServices'
     ]);
 
     // application's constants

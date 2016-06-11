@@ -13,38 +13,16 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td>Laptop HP Envy</td>
-        <td>HP</td>
-        <td>Phone</td>
-        <td>123456</td>
-        <td>$ 50.00</td>
-        <td>50g</td>
-        <td>White</td>
-        <td>2016.05.05</td>
-        <td><img src="img/product/p-img1.jpg"></td>
-    </tr>
-    <tr>
-        <td>Laptop HP Envy</td>
-        <td>HP</td>
-        <td>Phone</td>
-        <td>123456</td>
-        <td>$ 50.00</td>
-        <td>50g</td>
-        <td>White</td>
-        <td>2016.05.05</td>
-        <td><img src="img/product/p-img2.jpg"></td>
-    </tr>
-    <tr>
-        <td>Laptop HP Envy</td>
-        <td>HP</td>
-        <td>Phone</td>
-        <td>123456</td>
-        <td>$ 50.00</td>
-        <td>50g</td>
-        <td>White</td>
-        <td>2016.05.05</td>
-        <td><img src="img/product/p-img3.jpg"></td>
+    <tr data-ng-repeat="item in items">
+        <td>{{item.name}}</td>
+        <td>{{item.vendor_id}}</td>
+        <td>{{item.type_id}}</td>
+        <td>{{item.serial_number}}</td>
+        <td>$ {{item.price}}</td>
+        <td>{{item.weight}}g</td>
+        <td>{{item.color}}</td>
+        <td>{{item.release_date}}</td>
+        <td><img ng-src="{{item.photo}}"></td>
     </tr>
     </tbody>
 </table>

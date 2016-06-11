@@ -29,6 +29,19 @@
                 .connection('myIndexedDB')
                 .upgradeDatabase(1, function (event, db, tx) {
 
+                    // vendor
+                    if (!db.objectStoreNames.contains("vendor")) {
+                        var vendorObjStore = db.createObjectStore('vendor', {keyPath: 'id', autoIncrement: true});
+                        vendorObjStore.createIndex('name_idx', 'name', {unique: true});
+                        vendorObjStore.createIndex('logo_idx', 'logo', {unique: false});
+                    }
+
+                    // type
+                    if (!db.objectStoreNames.contains("type")) {
+                        var typeObjStore = db.createObjectStore('type', {keyPath: 'id', autoIncrement: true});
+                        typeObjStore.createIndex('name_idx', 'name', {unique: true});
+                    }
+
                     // product
                     if (!db.objectStoreNames.contains("product")) {
                         var productObjStore = db.createObjectStore('product', {keyPath: 'id', autoIncrement: true});
@@ -43,19 +56,6 @@
                         productObjStore.createIndex('published_idx', 'published', {unique: false});
                         productObjStore.createIndex('photo_idx', 'photo', {unique: false});
                         productObjStore.createIndex('created_date_idx', 'created_date', {unique: false});
-                    }
-
-                    // vendor
-                    if (!db.objectStoreNames.contains("vendor")) {
-                        var vendorObjStore = db.createObjectStore('vendor', {keyPath: 'id', autoIncrement: true});
-                        vendorObjStore.createIndex('name_idx', 'name', {unique: true});
-                        vendorObjStore.createIndex('logo_idx', 'logo', {unique: false});
-                    }
-
-                    // type
-                    if (!db.objectStoreNames.contains("type")) {
-                        var typeObjStore = db.createObjectStore('type', {keyPath: 'id', autoIncrement: true});
-                        typeObjStore.createIndex('name_idx', 'name', {unique: true});
                     }
                 });
         }

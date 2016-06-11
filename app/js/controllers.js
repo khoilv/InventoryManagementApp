@@ -12,9 +12,12 @@
         'OBJECT_STORE_NAME_TYPE',
         function ($scope, dbService, OBJECT_STORE_NAME_PRODUCT, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
             dbService.initDb();
-            dbService.getAll(OBJECT_STORE_NAME_TYPE, function (data) {
-                console.log(data);
-            });
+            $scope.items = null;
+            
+            // get all products
+            dbService.getAll(OBJECT_STORE_NAME_PRODUCT, function (data) {
+                $scope.items = data;
+            })
         }
     ]);
 

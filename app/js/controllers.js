@@ -32,6 +32,7 @@
                     for (i = 0; i < length; i++) {
                         item = items[i];
                         dbService.getVendor(item.vendor_id, item);
+                        dbService.getType(item.type_id, item);
                         items[i] = item;
                     }
                     $scope.items = items;

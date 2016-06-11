@@ -1,42 +1,10 @@
 <ul>
-    <li class="thumbnail">
-        <img src="img/product/p-img1.jpg">
-        <h4>Item name</h4>
+    <li class="thumbnail" data-ng-repeat="item in latestItems">
+        <img ng-src="{{item.photo}}">
+        <h4>{{item.name}}</h4>
         <div class="img-logo col-md-6"><img src="img/logo/logo1.jpg"></div>
-        <p class="price col-md-6 text-right">$ 95.00</p>
+        <p class="price col-md-6 text-right">$ {{item.price}}</p>
         <div class="clearfix"></div>
-        <span class="vendor-name text-center">Vendor name</span>
-    </li>
-    <li class="thumbnail">
-        <img src="img/product/p-img2.jpg">
-        <h4>Item name</h4>
-        <div class="img-logo col-md-6"><img src="img/logo/logo2.jpg"></div>
-        <p class="price col-md-6 text-right">$ 95.00</p>
-        <div class="clearfix"></div>
-        <span class="vendor-name text-center">Vendor name</span>
-    </li>
-    <li class="thumbnail">
-        <img src="img/product/p-img3.jpg">
-        <h4>Item name</h4>
-        <div class="img-logo col-md-6"><img src="img/logo/logo3.jpg"></div>
-        <p class="price col-md-6 text-right">$ 95.00</p>
-        <div class="clearfix"></div>
-        <span class="vendor-name text-center">Vendor name</span>
-    </li>
-    <li class="thumbnail">
-        <img src="img/product/p-img4.jpg">
-        <h4>Item name</h4>
-        <div class="img-logo col-md-6"><img src="img/logo/logo4.jpg"></div>
-        <p class="price col-md-6 text-right">$ 95.00</p>
-        <div class="clearfix"></div>
-        <span class="vendor-name text-center">Vendor name</span>
-    </li>
-    <li class="thumbnail">
-        <img src="img/product/p-img4.jpg">
-        <h4>Item name</h4>
-        <div class="img-logo col-md-6"><img src="img/logo/logo5.jpg"></div>
-        <p class="price col-md-6 text-right">$ 95.00</p>
-        <div class="clearfix"></div>
-        <span class="vendor-name text-center">Vendor name</span>
+        <span class="vendor-name text-center">{{item.vendor_id}}</span>
     </li>
 </ul>

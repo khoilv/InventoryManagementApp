@@ -2,9 +2,9 @@
     <li class="thumbnail" data-ng-repeat="item in latestItems">
         <img ng-src="{{item.photo}}">
         <h4>{{item.name}}</h4>
-        <div class="img-logo col-md-6"><img src="img/logo/logo1.jpg"></div>
+        <div class="img-logo col-md-6"><img ng-src="{{item.vendor_logo}}"></div>
         <p class="price col-md-6 text-right">$ {{item.price}}</p>
         <div class="clearfix"></div>
-        <span class="vendor-name text-center">{{item.vendor_id}}</span>
+        <span class="vendor-name text-center">{{item.vendor_name}}</span>
     </li>
 </ul>

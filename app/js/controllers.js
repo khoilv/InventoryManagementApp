@@ -31,8 +31,14 @@
             });
 
             // get and show the 5 latest products
-            dbService.getLatestItems(function (data) {
-                $scope.latestItems = data;
+            dbService.getLatestItems(function (items) {
+                var latestItems = [], latestItem = null;
+                items.forEach(function (item) {
+                    latestItem = {"photo": item.photo, "name": item.name, "price": item.price, "vendor_logo": null, "vendor_name": null};
+                    dbService.getVendor(item.vendor_id, latestItem);
+                    latestItems.push(latestItem);
+                });
+                $scope.latestItems = latestItems;
             });
         }
     ]);

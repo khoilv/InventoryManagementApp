@@ -74,14 +74,13 @@ nav li a{
     display: block;
     border-left: 1px solid #ccc;
 }
-nav li:hover a{
+nav li:hover a, nav li.active a{
     transition: all ease 0.3s;
     background-color: #2aabd2;
 }
-nav li:hover a span{
+nav li:hover a span, nav li.active a span{
     color: #fff;
 }
-
 .sidebar{
     margin-top: 55px;
 }

@@ -13,9 +13,9 @@
             var initDb = function () {
                 // initialize types
                 var types = [
-                    {"name": "Phone"},
-                    {"name": "Tablet"},
-                    {"name": "Laptop"}
+                    {"id": 1, "name": "Phone"},
+                    {"id": 2, "name": "Tablet"},
+                    {"id": 3, "name": "Laptop"}
                 ];
                 $indexedDB.openStore(OBJECT_STORE_NAME_TYPE, function (store) {
                     store.clear().then(function () {});
@@ -24,11 +24,11 @@
 
                 // initialize vendors
                 var vendors = [
-                    {"name": "Das Auto", "logo": "img/logo/logo1.jpg"},
-                    {"name": "Topica EDTech Group", "logo": "img/logo/logo2.jpg"},
-                    {"name": "Google", "logo": "img/logo/logo3.jpg"},
-                    {"name": "Founder Institute", "logo": "img/logo/logo4.jpg"},
-                    {"name": "Magic", "logo": "img/logo/logo5.jpg"}
+                    {"id": 1, "name": "Das Auto", "logo": "img/logo/logo1.jpg"},
+                    {"id": 2, "name": "Topica EDTech Group", "logo": "img/logo/logo2.jpg"},
+                    {"id": 3, "name": "Google", "logo": "img/logo/logo3.jpg"},
+                    {"id": 4, "name": "Founder Institute", "logo": "img/logo/logo4.jpg"},
+                    {"id": 5, "name": "Magic", "logo": "img/logo/logo5.jpg"}
                 ];
                 $indexedDB.openStore(OBJECT_STORE_NAME_VENDOR, function (store) {
                     store.clear().then(function () {});

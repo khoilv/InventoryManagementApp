@@ -36,12 +36,54 @@ a, a:hover{
     text-decoration:none !important;
 }
 
-.mt50{
-    margin-top: 50px;
+.mt30{
+    margin-top: 30px;
 }
-.title{
+.mt5{
+    margin-top: 5px !important;
+}
+.pr0{
+    padding-right: 0;
+}
+header{
+    text-align: center;
+}
+header h2{
+    margin-left: 15px;
+    color: #555;
+}
+.btn-warning,
+.btn-success{
+    color: #fff;
+    display: inline-block;
+    margin:15px;
+}
+header{
+    border-top:1px solid #ccc;
     border-bottom:1px solid #ccc;
-    padding-bottom: 10px;
+}
+nav li{
+    float: left;
+}
+nav li span{
+    display: block;
+    text-align: center;
+}
+nav li a{
+    padding:15px;
+    display: block;
+    border-left: 1px solid #ccc;
+}
+nav li:hover a{
+    transition: all ease 0.3s;
+    background-color: #2aabd2;
+}
+nav li:hover a span{
+    color: #fff;
+}
+
+.sidebar{
+    margin-top: 55px;
 }
 .sidebar li{
     margin-bottom: 20px;
@@ -83,5 +125,31 @@ a, a:hover{
     margin-top: 20px;
 }
 .table{
-    margin-top: 30px;
+    margin-top: 20px;
+}
+.table,
+.table tr,
+.table td,
+.table th{
+    border-collapse: collapse;
+    border:1px solid #ccc;
+}
+.table tr td:nth-child(9){
+    width: 12%;
+}
+.table thead{
+    background-color: #2aabd2;
+}
+.table thead th{
+    text-align: center;
+    padding-bottom: 13px !important;
+}
+.table thead th a{
+    color: #fff;
+}
+table .glyphicon{
+    margin:0;
+    padding: 0;
+    line-height: 8px;
+    display: block !important;
 }

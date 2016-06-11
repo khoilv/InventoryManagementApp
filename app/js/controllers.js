@@ -17,7 +17,11 @@
             // get all products
             dbService.getAll(OBJECT_STORE_NAME_PRODUCT, function (data) {
                 $scope.items = data;
-            })
+            });
+            
+            dbService.getLatestItems(function (data) {
+                console.log(data);
+            });
         }
     ]);
 

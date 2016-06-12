@@ -40,7 +40,6 @@
                         item.search_value = item.name + ' ' + item.color + ' ' + item.price;
                         items[i] = item;
                     }
-                    //console.log(items);
                     $scope.items = items;
                 }
             });

@@ -5,12 +5,29 @@
     var imFilters = angular.module('imFilters', []);
 
     imFilters.filter('filterItems', function () {
-       return function (item, filterValue) {
-           if (filterValue == null || filterValue.trim() == '') {
-               return true;
-           } else {
-               return false;
+       return function (items, searchText) {
+
+           console.log('filterItems');
+
+           if (!angular.isDefined(searchText) || searchText == null || searchText.trim() == '') {
+               return items;
            }
+           return items.filter(function (item) {
+               if (item.name.indexOf(searchText) >= 0) {
+                   return true;
+               }
+           });
+
+           /*
+           searchText = searchText.toLowerCase();
+           var data = [];
+           angular.forEach(items, function (item) {
+              if (item.price == searchText || item.name.toLowerCase().indexOf(searchText) != -1 || item.color == searchText) {
+                  data.push(item);
+              }
+           });
+           return data;
+           */
        }
     });
 
@@ -27,7 +44,7 @@
 
     imFilters.filter('formatDate', function () {
         return function (timestamp) {
-            
+
         }
     });
 

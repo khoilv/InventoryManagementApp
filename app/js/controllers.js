@@ -29,7 +29,6 @@
             dbService.initDb();
             $scope.items = null;
             $scope.latestItems = null;
-            
             $scope.sorts = {
                 field: ['name', 'vendor_name', 'type_name', 'serial_number', 'price', 'weight', 'color', 'release_date', 'photo'],
                 status: [0, 0, 0, 0, 0, 0, 0, 0, 0]

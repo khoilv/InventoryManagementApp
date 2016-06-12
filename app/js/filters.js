@@ -4,6 +4,16 @@
 
     var imFilters = angular.module('imFilters', []);
 
+    imFilters.filter('filterItems', function () {
+       return function (item, filterValue) {
+           if (filterValue == null || filterValue.trim() == '') {
+               return true;
+           } else {
+               return false;
+           }
+       }
+    });
+
     imFilters.filter('weight', function () {
         return function (w, unit) {
             if (isNaN(w) || w < 0) {

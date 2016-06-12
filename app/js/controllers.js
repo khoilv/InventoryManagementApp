@@ -8,7 +8,7 @@
      * Application controller
      */
     imControllers.controller('appCtrl', ['$scope', function ($scope) {
-
+        
     }]);
 
     /**
@@ -25,6 +25,7 @@
             dbService.initDb();
             $scope.items = null;
             $scope.latestItems = null;
+            $scope.searchValue = null;
 
             // get and show all products
             dbService.getAll(OBJECT_STORE_NAME_PRODUCT, function (items) {
@@ -35,8 +36,10 @@
                         dbService.getVendor(item.vendor_id, item);
                         dbService.getType(item.type_id, item);
                         item.release_date = formatDate(item.release_date);
+                        item.search_value = item.name + ' ' + item.color + ' ' + item.price;
                         items[i] = item;
                     }
+                    //console.log(items);
                     $scope.items = items;
                 }
             });
@@ -53,6 +56,14 @@
                     $scope.latestItems = items;
                 }
             });
+
+            $scope.criteriaMatch = function (item) {
+                if ($scope.searchValue == null || $scope.searchValue.trim() == '') {
+                    return true;
+                } else {
+                    return (item.search_value.search($scope.searchValue)) != -1;
+                }
+            }
         }
     ]);
 

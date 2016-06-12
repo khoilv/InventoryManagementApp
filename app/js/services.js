@@ -74,7 +74,16 @@
                     });
                 });
             };
-            
+
+            var getAllItems = function (type, object) {
+                $indexedDB.openStore(type, function (store) {
+                    store.getAll().then(function (data) {
+                        console.log(data);
+                        object.data = data;
+                    });
+                });
+            };
+
             var getLatestItems = function (callback) {
                 $indexedDB.openStore(OBJECT_STORE_NAME_PRODUCT, function (store) {
                     var find = store.query().$index("release_date_idx").$desc(false);
@@ -107,6 +116,7 @@
             return {
                 initDb: initDb,
                 getAll: getAll,
+                getAllItems: getAllItems,
                 getLatestItems: getLatestItems,
                 getVendor: getVendor,
                 getType: getType

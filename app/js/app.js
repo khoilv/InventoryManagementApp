@@ -25,7 +25,16 @@
         function($locationProvider, $routeProvider, $indexedDBProvider) {
             $locationProvider.hashPrefix('!');
 
-            $routeProvider.otherwise({redirectTo: '/'});
+            $routeProvider
+                .when('/', {
+                    templateUrl: 'partials/home/home.html',
+                    controller: 'homeCtrl'
+                })
+                .when('/dashboard', {
+                    templateUrl: 'partials/dashboard/dashboard.html',
+                    controller: 'dashboardCtrl'
+                })
+                .otherwise({redirectTo: '/'});
 
             $indexedDBProvider
                 .connection('myIndexedDB')

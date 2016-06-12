@@ -17,10 +17,11 @@
     imControllers.controller('homeCtrl', [
         '$scope',
         'dbService',
+        'formatDate',
         'OBJECT_STORE_NAME_PRODUCT',
         'OBJECT_STORE_NAME_VENDOR',
         'OBJECT_STORE_NAME_TYPE',
-        function ($scope, dbService, OBJECT_STORE_NAME_PRODUCT, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
+        function ($scope, dbService, formatDate, OBJECT_STORE_NAME_PRODUCT, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
             dbService.initDb();
             $scope.items = null;
             $scope.latestItems = null;
@@ -33,6 +34,7 @@
                         item = items[i];
                         dbService.getVendor(item.vendor_id, item);
                         dbService.getType(item.type_id, item);
+                        item.release_date = formatDate(item.release_date);
                         items[i] = item;
                     }
                     $scope.items = items;

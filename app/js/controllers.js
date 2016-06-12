@@ -31,14 +31,7 @@
             dbService.getAll(OBJECT_STORE_NAME_PRODUCT, function (items) {
                 $scope.items = formatData(items);
             });
-
-            // search for products
-            $scope.searchItems = function (searchValue) {
-                dbService.searchItems(searchValue, function (items) {
-                    $scope.items = formatData(items);
-                });
-            };
-
+            
             // get and show the 5 latest products
             dbService.getLatestItems(function (items) {
                 if (Array.isArray(items) && items.length > 0) {
@@ -52,6 +45,17 @@
                 }
             });
 
+            // search for products
+            $scope.searchItems = function (searchValue) {
+                dbService.searchItems(searchValue, function (items) {
+                    $scope.items = formatData(items);
+                });
+            };
+            
+            $scope.orderBy = function (fieldName) {
+                
+            };
+            
             function formatData(items) {
                 if (Array.isArray(items) && items.length > 0) {
                     var i, length = items.length, item = null;

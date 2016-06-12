@@ -22,10 +22,18 @@
         'OBJECT_STORE_NAME_PRODUCT',
         'OBJECT_STORE_NAME_VENDOR',
         'OBJECT_STORE_NAME_TYPE',
+        'ORDER_BY_NONE',
+        'ORDER_BY_ASC',
+        'ORDER_BY_DESC',
         function ($scope, $filter, dbService, formatDate, OBJECT_STORE_NAME_PRODUCT, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
             dbService.initDb();
             $scope.items = null;
             $scope.latestItems = null;
+            
+            $scope.sorts = {
+                field: ['name', 'vendor_name', 'type_name', 'serial_number', 'price', 'weight', 'color', 'release_date', 'photo'],
+                status: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+            };
 
             // get and show all products
             dbService.getAll(OBJECT_STORE_NAME_PRODUCT, function (items) {
@@ -52,8 +60,17 @@
                 });
             };
             
-            $scope.orderBy = function (fieldName) {
-                
+            $scope.sortItems = function (fieldName) {
+                var index = $scope.sorts.field.indexOf(fieldName);
+                var status = $scope.sorts.status[index];
+                if (status == 0 || status == 1) {
+                    status += 1;
+                } else {
+                    status -= 1;
+                }
+                $scope.sorts.status[index] = status;
+                console.log($scope.sorts);
+                console.log($scope.items);
             };
             
             function formatData(items) {

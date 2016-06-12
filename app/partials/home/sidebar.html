@@ -3,7 +3,7 @@
         <img ng-src="{{item.photo}}">
         <h4>{{item.name}}</h4>
         <div class="img-logo col-md-6"><img ng-src="{{item.vendor_logo}}"></div>
-        <p class="price col-md-6 text-right">$ {{item.price}}</p>
+        <p class="price col-md-6 text-right">{{item.price | currency}}</p>
         <div class="clearfix"></div>
         <span class="vendor-name text-center">{{item.vendor_name}}</span>
     </li>

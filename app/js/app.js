@@ -27,11 +27,11 @@
 
             $routeProvider
                 .when('/', {
-                    templateUrl: 'partials/home/home.html',
+                    templateUrl: 'partials/home/main.html',
                     controller: 'homeCtrl'
                 })
                 .when('/dashboard', {
-                    templateUrl: 'partials/dashboard/dashboard.html',
+                    templateUrl: 'partials/dashboard/main.html',
                     controller: 'dashboardCtrl'
                 })
                 .otherwise({redirectTo: '/'});

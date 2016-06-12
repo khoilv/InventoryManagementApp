@@ -35,8 +35,8 @@
             } else {
 
                 // Check if optional parameters are passed, if not, use the defaults
-                var symbol = symbol || '$';
-                var place = place === undefined ? true : place;
+                symbol = symbol || '$';
+                place = place === undefined ? true : place;
 
                 // Perform the operation to set the symbol in the right location
                 if( place === true) {

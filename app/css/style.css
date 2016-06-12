@@ -176,7 +176,7 @@ nav li:hover a span, nav li.active a span {
     padding-bottom: 13px !important;
 }
 
-.table thead th a {
+.table thead th div {
     color: #fff;
 }
 

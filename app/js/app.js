@@ -27,9 +27,14 @@
         '$indexedDBProvider',
         function($locationProvider, $routeProvider, $indexedDBProvider) {
             $locationProvider.hashPrefix('!');
-
+            //$locationProvider.html5Mode(false).hashPrefix('!');
+            
             $routeProvider
                 .when('/', {
+                    templateUrl: 'partials/home/main.html',
+                    controller: 'homeCtrl'
+                })
+                .when('/home', {
                     templateUrl: 'partials/home/main.html',
                     controller: 'homeCtrl'
                 })

@@ -14,7 +14,8 @@
     </thead>
     <tbody>
     <!--<tr data-ng-repeat="item in items | filter : {'name': 'HP', 'color': 'Black', 'price': 18}">-->
-    <tr data-ng-repeat="item in items | filter : criteriaMatch">
+    <!--<tr data-ng-repeat="item in items | filter : criteriaMatch">-->
+    <tr data-ng-repeat="item in items">
         <td>{{item.name}}</td>
         <td>{{item.vendor_name}}</td>
         <td>{{item.type_name}}</td>
@@ -22,7 +23,7 @@
         <td>{{item.price | currency}}</td>
         <td>{{item.weight | weight:'g'}}</td>
         <td>{{item.color}}</td>
-        <td>{{item.release_date}}</td>
+        <td>{{item.release_date | date: 'MM/dd/yyyy'}}</td>
         <td><img ng-src="{{item.photo}}"></td>
     </tr>
     </tbody>

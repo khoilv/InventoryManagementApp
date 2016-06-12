@@ -16,16 +16,17 @@
      */
     imControllers.controller('homeCtrl', [
         '$scope',
+        '$filter',
         'dbService',
         'formatDate',
         'OBJECT_STORE_NAME_PRODUCT',
         'OBJECT_STORE_NAME_VENDOR',
         'OBJECT_STORE_NAME_TYPE',
-        function ($scope, dbService, formatDate, OBJECT_STORE_NAME_PRODUCT, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
+        function ($scope, $filter, dbService, formatDate, OBJECT_STORE_NAME_PRODUCT, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
             dbService.initDb();
             $scope.items = null;
             $scope.latestItems = null;
-            $scope.searchValue = null;
+            $scope.searchText = null;
 
             // get and show all products
             dbService.getAll(OBJECT_STORE_NAME_PRODUCT, function (items) {
@@ -35,7 +36,7 @@
                         item = items[i];
                         dbService.getVendor(item.vendor_id, item);
                         dbService.getType(item.type_id, item);
-                        item.release_date = formatDate(item.release_date);
+                        //item.release_date = formatDate(item.release_date);
                         item.search_value = item.name + ' ' + item.color + ' ' + item.price;
                         items[i] = item;
                     }
@@ -56,14 +57,6 @@
                     $scope.latestItems = items;
                 }
             });
-
-            $scope.criteriaMatch = function (item) {
-                if ($scope.searchValue == null || $scope.searchValue.trim() == '') {
-                    return true;
-                } else {
-                    return (item.search_value.search($scope.searchValue)) != -1;
-                }
-            }
         }
     ]);
 

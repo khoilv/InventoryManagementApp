@@ -25,6 +25,12 @@
         }
     });
 
+    imFilters.filter('formatDate', function () {
+        return function (timestamp) {
+            
+        }
+    });
+
     /**
      * Build our own custom currency filter supports the ability to choose what side the currency symbol goes on.
      * For our custom filter, we will allow the user to pass two parameters.

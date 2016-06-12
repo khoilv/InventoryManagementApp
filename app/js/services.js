@@ -6,7 +6,7 @@
 
     imServices.factory('convertDate', [function () {
         return function (strDate) {
-            return new Date(strDate).getTime() / 1000;
+            return new Date(strDate).getTime(); // new Date(strDate).getTime() / 1000;
         }
     }]);
 

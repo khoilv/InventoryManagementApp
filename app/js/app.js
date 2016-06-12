@@ -9,7 +9,8 @@
         'ui.bootstrap',
         'imControllers',
         'imServices',
-        'imFilters'
+        'imFilters',
+        'imDirectives'
     ]);
 
     // application's constants

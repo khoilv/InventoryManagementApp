@@ -75,11 +75,19 @@
                 });
             };
 
-            var getAllItems = function (type, object) {
-                $indexedDB.openStore(type, function (store) {
-                    store.getAll().then(function (data) {
-                        console.log(data);
-                        object.data = data;
+            var searchItems = function (searchValue, callback) {
+                $indexedDB.openStore(OBJECT_STORE_NAME_PRODUCT, function (store) {
+                    store.getAll().then(function (items) {
+                        var data = [], searchKey = null;
+                        angular.forEach(items, function (item) {
+                            searchKey = item.name + ' ' + item.color + ' ' + item.price;
+                            if (searchKey.toLowerCase().search(searchValue.toLowerCase()) != -1) {
+                                data.push(item);
+                            }
+                        });
+                        if (typeof callback === 'function') {
+                            callback(data);
+                        }
                     });
                 });
             };
@@ -116,7 +124,7 @@
             return {
                 initDb: initDb,
                 getAll: getAll,
-                getAllItems: getAllItems,
+                searchItems: searchItems,
                 getLatestItems: getLatestItems,
                 getVendor: getVendor,
                 getType: getType

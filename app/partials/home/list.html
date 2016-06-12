@@ -14,8 +14,7 @@
     </thead>
     <tbody>
     <!--<tr data-ng-repeat="item in items | filter : {'name': 'HP', 'color': 'Black', 'price': 18}">-->
-    <!--<tr data-ng-repeat="item in items | filter: criteriaMatch(18)">-->
-    <tr data-ng-repeat="item in items">
+    <tr data-ng-repeat="item in items | filter : searchItems('White')">
         <td>{{item.name}}</td>
         <td>{{item.vendor_name}}</td>
         <td>{{item.type_name}}</td>

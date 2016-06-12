@@ -39,7 +39,7 @@
                         item.search_value = item.name + ' ' + item.color + ' ' + item.price;
                         items[i] = item;
                     }
-                    //$scope.items = $filter('filter')(items, {price: 18});
+                    //$scope.items = $filter('filter')(items, {search_value: ''});
                     $scope.items = items;
                 }
             });
@@ -57,25 +57,12 @@
                 }
             });
 
-            $scope.filterByName = function (item) {
-                return item.name.search($scope.searchText) != -1;
-            };
-
-            $scope.searchItems = function () {
-                var data = [];
-                angular.forEach($scope.items, function (item) {
-                   if (item.name.search($scope.searchText) != -1) {
-                       data.push(item);
-                   }
-                });
-                $scope.items = data;
-            };
-
-            $scope.criteriaMatch = function( criteria ) {
+            $scope.searchItems = function( searchText ) {
                 return function( item ) {
-                    return item.price == criteria;
+                    return item.search_value.toLowerCase().search(searchText.toLowerCase()) != -1;
                 };
             };
+
         }
     ]);
 

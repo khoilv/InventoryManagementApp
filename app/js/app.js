@@ -8,7 +8,8 @@
         'indexedDB',
         'ui.bootstrap',
         'imControllers',
-        'imServices'
+        'imServices',
+        'imFilters'
     ]);
 
     // application's constants

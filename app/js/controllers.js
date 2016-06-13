@@ -29,7 +29,7 @@
             dbService.initDb();
             $scope.items = null;
             $scope.latestItems = null;
-            $scope.searchText = null;
+            $scope.searchText = '';
             $scope.sorts = {
                 field: ['name', 'vendor_name', 'type_name', 'serial_number', 'price', 'weight', 'color', 'release_date', 'photo'],
                 status: [ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE],
@@ -67,7 +67,7 @@
                 var status = getOrderStatus(fieldName);
                 return (status == ORDER_BY_NONE || status == ORDER_BY_DESC);
             };
-            
+
             $scope.hasMenuDown = function (fieldName) {
                 var status = getOrderStatus(fieldName);
                 return (status == ORDER_BY_NONE || status == ORDER_BY_ASC);
@@ -75,21 +75,23 @@
 
             $scope.sortItems = function (fieldName) {
                 var status, index = $scope.sorts.priority.indexOf(fieldName);
-                if ( index != -1) {
-                    delete $scope.sorts.priority[index];
-                    $scope.sorts.priority = $scope.sorts.priority.filter(function (element) {
-                        return !!element;
-                    });
+                if (index != -1) {
+                    removeOrderByField(index);
+                } else {
+                    index = $scope.sorts.priority.indexOf('-' + fieldName);
+                    if (index != -1) removeOrderByField(index);
                 }
-                $scope.sorts.priority.push(fieldName);
                 index = $scope.sorts.field.indexOf(fieldName);
                 status = $scope.sorts.status[index];
                 if (status == ORDER_BY_NONE || status == ORDER_BY_DESC) {
                     status = ORDER_BY_ASC;
+                    $scope.sorts.priority.push(fieldName);
                 } else if (status == ORDER_BY_ASC) {
                     status = ORDER_BY_DESC;
+                    $scope.sorts.priority.push('-' + fieldName);
                 }
                 $scope.sorts.status[index] = status;
+                //console.log($scope.sorts.priority);
             };
 
             function formatData(items) {
@@ -104,10 +106,17 @@
                 }
                 return items;
             }
-            
-            function getOrderStatus (fieldName) {
+
+            function getOrderStatus(fieldName) {
                 var index = $scope.sorts.field.indexOf(fieldName);
                 return $scope.sorts.status[index];
+            }
+
+            function removeOrderByField(index) {
+                delete $scope.sorts.priority[index];
+                $scope.sorts.priority = $scope.sorts.priority.filter(function (element) {
+                    return !!element;
+                });
             }
         }
     ]);

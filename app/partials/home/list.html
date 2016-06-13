@@ -67,7 +67,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr data-ng-repeat="item in items | orderBy: 'release_date': true | orderBy: 'color': false">
+    <tr data-ng-repeat="item in items | orderBy: sorts.priority">
         <td>{{item.name}}</td>
         <td>{{item.vendor_name}}</td>
         <td>{{item.type_name}}</td>

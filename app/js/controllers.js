@@ -73,8 +73,11 @@
             };
 
             $scope.sortItems = function (fieldName) {
-                var index = $scope.sorts.field.indexOf(fieldName);
-                var status = $scope.sorts.status[index];
+                var status, index = $scope.sorts.priority.indexOf(fieldName);
+                if ( index != -1) delete $scope.sorts.priority[index];
+                $scope.sorts.priority.push(fieldName);
+                index = $scope.sorts.field.indexOf(fieldName);
+                status = $scope.sorts.status[index];
                 if (status == ORDER_BY_NONE || status == ORDER_BY_DESC) {
                     status = ORDER_BY_ASC;
                 } else if (status == ORDER_BY_ASC) {
@@ -82,7 +85,7 @@
                 }
                 $scope.sorts.status[index] = status;
                 console.log($scope.sorts);
-                console.log($scope.items);
+                //console.log($scope.items);
             };
 
             function formatData(items) {

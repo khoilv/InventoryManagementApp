@@ -163,9 +163,11 @@ nav li:hover a span, nav li.active a span {
     border: 1px solid #ccc;
 }
 
-.table tr td:nth-child(9) {
+.dashboard-product tr td:nth-child(10),
+.home-product tr td:nth-child(9) {
     width: 12%;
 }
+
 
 .table thead {
     background-color: #2aabd2;
@@ -191,7 +193,7 @@ table .glyphicon {
 #dashboard .glyphicon{
     display: inline-block !important;
 }
-#dashboard .table tr td:nth-child(10){
+#dashboard .table tr td:nth-child(12){
     width: 10%;
 }
 #dashboard .btn-warning{
@@ -206,4 +208,17 @@ table .glyphicon {
 }
 .modal-lg{
     width: 50%;
+}
+.nav-pills li a:hover,
+.active-tab a{
+    background-color: #2aabd2 !important;
+    background-image: none;
+    color: #fff !important;
+    transition: all ease 0.3s;
+}
+
+.menu-wrapper{
+    height:16px;
+    border: 1px solid #2aabd2;
+    display: block;
 }

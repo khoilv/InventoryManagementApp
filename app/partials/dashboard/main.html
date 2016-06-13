@@ -4,22 +4,21 @@
             <h3 style="background-color:#2aabd2;padding:10px; color: #fff;">General information</h3>
             <div class="form-group">
                 <label class="control-label col-sm-3">Total number of products:</label>
-                <div class="col-sm-4"><p class="form-control">{{totalItems}}</p></div>
+                <div class="col-sm-2"><p class="form-control">{{totalItems}}</p></div>
             </div>
             <div class="clearfix"></div>
             <div class="form-group" style="margin-top: 15px;">
                 <label class="control-label col-sm-3">Average product price:</label>
-                <div class="col-sm-4"><p class="form-control">{{averagePrice | currency}}</p></div>
+                <div class="col-sm-2"><p class="form-control">{{averagePrice | currency}}</p></div>
             </div>
             <div class="clearfix"></div>
         </div>
         <ul class="nav nav-pills mt30">
-            <li class="active"><a class="btn-danger" data-toggle="pill" href="javascript:void(0);">Product</a></li>
-            <li><a class="btn-danger" data-toggle="pill" href="javascript:void(0);">Vendor</a></li>
-
-            <li class="pull-right"><a href="javascript:void(0);" class="btn btn-success" style="margin: 0;">Add</a></li>
+            <li class="active-tab"><a class="btn-default" data-toggle="pill" href="javascript:void(0);">Product</a></li>
+            <li><a class="btn-default" data-toggle="pill" href="javascript:void(0);">Vendor</a></li>
         </ul>
         <div class="tab-content">
+            <div class="pull-right"><a href="javascript:void(0);" class="btn btn-success" style="margin: 0;">Add</a></div>
             <div id="product" data-ng-include="'partials/dashboard/product.html'" class="tab-pane fade in active"></div>
             <div id="vendor" data-ng-include="'partials/dashboard/vendor.html'" class="tab-pane fade"></div>
             <div data-ng-include="'partials/dashboard/modal/product.html'"></div>

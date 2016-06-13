@@ -186,3 +186,24 @@ table .glyphicon {
     line-height: 8px;
     display: block !important;
 }
+
+/*------------- dashboard -------------*/
+#dashboard .glyphicon{
+    display: inline-block !important;
+}
+#dashboard .table tr td:nth-child(10){
+    width: 10%;
+}
+#dashboard .btn-warning{
+    margin: 3px;
+}
+#dashboard td .glyphicon{
+    color: #fff;
+}
+#vendor .table td:nth-child(3),
+#vendor .table td:nth-child(2){
+    text-align: center;
+}
+.modal-lg{
+    width: 50%;
+}

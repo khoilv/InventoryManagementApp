@@ -112,4 +112,14 @@
         }
     ]);
 
+    /**
+     * Dashboard controller
+     */
+    imControllers.controller('dashboardCtrl', [
+        '$scope',
+        function ($scope) {
+
+        }
+    ]);
+
 })(window, window.angular);

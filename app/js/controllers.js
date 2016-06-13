@@ -90,7 +90,8 @@
                     status = ORDER_BY_NONE;
                 }
                 $scope.sorts.status[index] = status;
-                console.log($scope.sorts.priority);
+                //console.log($scope.sorts.priority);
+                $scope.items = $filter('orderBy')($scope.items, $scope.sorts.priority);
             };
 
             function formatData(items) {

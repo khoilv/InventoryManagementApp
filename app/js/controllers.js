@@ -29,6 +29,7 @@
             dbService.initDb();
             $scope.items = null;
             $scope.latestItems = null;
+            $scope.searchText = null;
             $scope.sorts = {
                 field: ['name', 'vendor_name', 'type_name', 'serial_number', 'price', 'weight', 'color', 'release_date', 'photo'],
                 status: [ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE],
@@ -74,7 +75,12 @@
 
             $scope.sortItems = function (fieldName) {
                 var status, index = $scope.sorts.priority.indexOf(fieldName);
-                if ( index != -1) delete $scope.sorts.priority[index];
+                if ( index != -1) {
+                    delete $scope.sorts.priority[index];
+                    $scope.sorts.priority = $scope.sorts.priority.filter(function (element) {
+                        return !!element;
+                    });
+                }
                 $scope.sorts.priority.push(fieldName);
                 index = $scope.sorts.field.indexOf(fieldName);
                 status = $scope.sorts.status[index];
@@ -84,8 +90,6 @@
                     status = ORDER_BY_DESC;
                 }
                 $scope.sorts.status[index] = status;
-                console.log($scope.sorts);
-                //console.log($scope.items);
             };
 
             function formatData(items) {

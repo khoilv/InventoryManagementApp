@@ -7,9 +7,10 @@
     /**
      * Application controller
      */
-    imControllers.controller('appCtrl', ['$scope', function ($scope) {
+    imControllers.controller('appCtrl', ['$scope', 'dbService', function ($scope, dbService) {
         $scope.homeActive = 'active';
         $scope.dashboardActive = '';
+
         $scope.onMenuSelect = function (menu) {
             if (menu == 'home') {
                 $scope.homeActive = 'active';
@@ -18,6 +19,19 @@
                 $scope.homeActive = '';
                 $scope.dashboardActive = 'active';
             }
+        };
+
+        $scope.formatData = function (items) {
+            if (Array.isArray(items) && items.length > 0) {
+                var i, length = items.length, item = null;
+                for (i = 0; i < length; i++) {
+                    item = items[i];
+                    dbService.getVendor(item.vendor_id, item);
+                    dbService.getType(item.type_id, item);
+                    items[i] = item;
+                }
+            }
+            return items;
         }
     }]);
 
@@ -49,7 +63,7 @@
 
             // get and show all products
             dbService.getAll(OBJECT_STORE_NAME_PRODUCT, function (items) {
-                $scope.items = formatData(items);
+                $scope.items = $scope.formatData(items);
             });
 
             // get and show the 5 latest products
@@ -71,7 +85,7 @@
                 if (index > 0) searchValue = searchValue.substring(0, index);
                 dbService.searchItems(searchValue, function (items) {
                     resetSort();
-                    $scope.items = formatData(items);
+                    $scope.items = $scope.formatData(items);
                 });
             };
 
@@ -105,19 +119,6 @@
                 $scope.items = $filter('orderBy')($scope.items, $scope.sorts.priority);
             };
 
-            function formatData(items) {
-                if (Array.isArray(items) && items.length > 0) {
-                    var i, length = items.length, item = null;
-                    for (i = 0; i < length; i++) {
-                        item = items[i];
-                        dbService.getVendor(item.vendor_id, item);
-                        dbService.getType(item.type_id, item);
-                        items[i] = item;
-                    }
-                }
-                return items;
-            }
-
             function getOrderStatus(fieldName) {
                 var index = $scope.sorts.field.indexOf(fieldName);
                 return $scope.sorts.status[index];
@@ -147,8 +148,25 @@
      */
     imControllers.controller('dashboardCtrl', [
         '$scope',
-        function ($scope) {
+        'dbService',
+        'OBJECT_STORE_NAME_PRODUCT',
+        'OBJECT_STORE_NAME_VENDOR',
+        'OBJECT_STORE_NAME_TYPE',
+        function ($scope, dbService, OBJECT_STORE_NAME_PRODUCT, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
+            $scope.totalItems = null;
+            $scope.averagePrice = null;
+            $scope.items = null;
 
+            // get and show all products
+            dbService.getAll(OBJECT_STORE_NAME_PRODUCT, function (items) {
+                var sumPrice = 0, total = items.length;
+                angular.forEach(items, function (item) {
+                   sumPrice += parseFloat(item.price);
+                });
+                $scope.totalItems = total;
+                $scope.averagePrice = sumPrice/total;
+                $scope.items = $scope.formatData(items);
+            });
         }
     ]);
 

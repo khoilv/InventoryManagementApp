@@ -104,6 +104,16 @@
                 });
             };
 
+            var countAllItems = function (callback) {
+                $indexedDB.openStore(OBJECT_STORE_NAME_PRODUCT, function (store) {
+                    store.count().then(function (e) {
+                        if (typeof callback === 'function') {
+                            callback(e);
+                        }
+                    });
+                });
+            };
+
             var getVendor = function (id, object) {
                 $indexedDB.openStore(OBJECT_STORE_NAME_VENDOR, function (store) {
                     store.find(id).then(function (e) {
@@ -126,6 +136,7 @@
                 getAll: getAll,
                 searchItems: searchItems,
                 getLatestItems: getLatestItems,
+                countAllItems: countAllItems,
                 getVendor: getVendor,
                 getType: getType
             }

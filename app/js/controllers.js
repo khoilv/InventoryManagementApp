@@ -115,7 +115,6 @@
                     status = ORDER_BY_NONE;
                 }
                 $scope.sorts.status[index] = status;
-                //console.log($scope.sorts.priority);
                 $scope.items = $filter('orderBy')($scope.items, $scope.sorts.priority);
             };
 
@@ -166,7 +165,6 @@
                 $scope.totalItems = total;
                 $scope.averagePrice = sumPrice/total;
                 $scope.items = $scope.formatData(items);
-                console.log($scope.items);
             });
         }
     ]);

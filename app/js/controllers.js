@@ -8,7 +8,7 @@
      * Application controller
      */
     imControllers.controller('appCtrl', ['$scope', function ($scope) {
-        
+
     }]);
 
     /**
@@ -38,7 +38,7 @@
             dbService.getAll(OBJECT_STORE_NAME_PRODUCT, function (items) {
                 $scope.items = formatData(items);
             });
-            
+
             // get and show the 5 latest products
             dbService.getLatestItems(function (items) {
                 if (Array.isArray(items) && items.length > 0) {
@@ -54,11 +54,13 @@
 
             // search for products
             $scope.searchItems = function (searchValue) {
+                var index = searchValue.indexOf('.');
+                if (index > 0) searchValue = searchValue.substring(0, index);
                 dbService.searchItems(searchValue, function (items) {
                     $scope.items = formatData(items);
                 });
             };
-            
+
             $scope.sortItems = function (fieldName) {
                 var index = $scope.sorts.field.indexOf(fieldName);
                 var status = $scope.sorts.status[index];
@@ -71,7 +73,7 @@
                 console.log($scope.sorts);
                 console.log($scope.items);
             };
-            
+
             function formatData(items) {
                 if (Array.isArray(items) && items.length > 0) {
                     var i, length = items.length, item = null;

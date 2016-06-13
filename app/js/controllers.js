@@ -173,9 +173,15 @@
                 if (tab == 'product') {
                     $scope.activeProductList = 'active-tab';
                     $scope.activeVendorList = '';
+                    dbService.getAll(OBJECT_STORE_NAME_PRODUCT, function (items) {
+                        $scope.items = $scope.formatData(items);
+                    });
                 } else {
                     $scope.activeProductList = '';
                     $scope.activeVendorList = 'active-tab';
+                    dbService.getAll(OBJECT_STORE_NAME_VENDOR, function (items) {
+                        $scope.items = items;
+                    });
                 }
             };
         }

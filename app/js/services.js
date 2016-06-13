@@ -67,9 +67,15 @@
 
             var getAll = function (type, callback) {
                 $indexedDB.openStore(type, function (store) {
-                    store.getAll().then(function (data) {
-                        if (typeof callback === 'function') {
-                            callback(data);
+                    store.getAll().then(function (items) {
+                        var data = [];
+                        if (Array.isArray(items) && items.length > 0) {
+                            angular.forEach(items, function (item) {
+                               if (item.published == 1) data.push(item);
+                            });
+                            if (typeof callback === 'function') {
+                                callback(data);
+                            }
                         }
                     });
                 });
@@ -80,9 +86,11 @@
                     store.getAll().then(function (items) {
                         var data = [], searchKey = null;
                         angular.forEach(items, function (item) {
-                            searchKey = item.name + ' ' + item.color + ' ' + item.price;
-                            if (searchKey.toLowerCase().search(searchValue.toLowerCase()) != -1) {
-                                data.push(item);
+                            if (item.published == 1) {
+                                searchKey = item.name + ' ' + item.color + ' ' + item.price;
+                                if (searchKey.toLowerCase().search(searchValue.toLowerCase()) != -1) {
+                                    data.push(item);
+                                }
                             }
                         });
                         if (typeof callback === 'function') {
@@ -96,9 +104,13 @@
                 $indexedDB.openStore(OBJECT_STORE_NAME_PRODUCT, function (store) {
                     var find = store.query().$index("release_date_idx").$desc(false);
                     store.findWhere(find).then(function (e) {
+                        var data = [];
                         if (Array.isArray(e) && e.length > 0) {
-                            if (e.length > 5) e = e.slice(0, 5);
-                            if (typeof callback === 'function') callback(e);
+                            angular.forEach(e, function (item) {
+                               if (item.published == 1) data.push(item);
+                            });
+                            if (data.length > 5) data = data.slice(0, 5);
+                            if (typeof callback === 'function') callback(data);
                         }
                     });
                 });

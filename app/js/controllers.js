@@ -124,10 +124,12 @@
             }
 
             function removeOrderByField(index) {
-                delete $scope.sorts.priority[index];
-                $scope.sorts.priority = $scope.sorts.priority.filter(function (element) {
+                var priority = $scope.sorts.priority;
+                delete priority[index];
+                priority = priority.filter(function (element) {
                     return !!element;
                 });
+                $scope.sorts.priority = priority;
             }
 
             function resetSort() {

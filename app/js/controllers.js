@@ -75,12 +75,8 @@
 
             $scope.sortItems = function (fieldName) {
                 var status, index = $scope.sorts.priority.indexOf(fieldName);
-                if (index != -1) {
-                    removeOrderByField(index);
-                } else {
-                    index = $scope.sorts.priority.indexOf('-' + fieldName);
-                    if (index != -1) removeOrderByField(index);
-                }
+                if (index == -1) index = $scope.sorts.priority.indexOf('-' + fieldName);
+                if (index != -1) removeOrderByField(index);
                 index = $scope.sorts.field.indexOf(fieldName);
                 status = $scope.sorts.status[index];
                 if (status == ORDER_BY_NONE || status == ORDER_BY_DESC) {

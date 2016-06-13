@@ -94,7 +94,7 @@ nav li a {
 
 nav li:hover a, nav li.active a {
     transition: all ease 0.3s;
-    background-color: #2aabd2;
+    background-color: #f6b019; /*#2aabd2;*/
 }
 
 nav li:hover a span, nav li.active a span {

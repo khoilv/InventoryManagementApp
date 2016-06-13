@@ -62,6 +62,16 @@
                 });
             };
 
+            $scope.hasMenuUp = function (fieldName) {
+                var status = getOrderStatus(fieldName);
+                return (status == ORDER_BY_NONE || status == ORDER_BY_DESC);
+            };
+            
+            $scope.hasMenuDown = function (fieldName) {
+                var status = getOrderStatus(fieldName);
+                return (status == ORDER_BY_NONE || status == ORDER_BY_ASC);
+            };
+
             $scope.sortItems = function (fieldName) {
                 var index = $scope.sorts.field.indexOf(fieldName);
                 var status = $scope.sorts.status[index];
@@ -87,7 +97,11 @@
                 }
                 return items;
             }
-
+            
+            function getOrderStatus (fieldName) {
+                var index = $scope.sorts.field.indexOf(fieldName);
+                return $scope.sorts.status[index];
+            }
         }
     ]);
 

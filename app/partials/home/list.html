@@ -4,64 +4,64 @@
         <th>
             Item name
             <div data-ng-click="sortItems('name');">
-                <span ng-if="sorts.status[0] == 0 || sorts.status[0] == 2" class="glyphicon glyphicon-menu-up mt5"></span>
-                <span ng-if="sorts.status[0] == 0 || sorts.status[0] == 1" class="glyphicon glyphicon-menu-down"></span>
+                <span ng-if="hasMenuUp('name');" class="glyphicon glyphicon-menu-up mt5"></span>
+                <span ng-if="hasMenuDown('name');" class="glyphicon glyphicon-menu-down"></span>
             </div>
         </th>
         <th>
             Vendor
             <div data-ng-click="sortItems('vendor_name');">
-                <span ng-if="sorts.status[1] == 0 || sorts.status[1] == 2" class="glyphicon glyphicon-menu-up mt5"></span>
-                <span ng-if="sorts.status[1] == 0 || sorts.status[1] == 1" class="glyphicon glyphicon-menu-down"></span>
+                <span ng-if="hasMenuUp('vendor_name');" class="glyphicon glyphicon-menu-up mt5"></span>
+                <span ng-if="hasMenuDown('vendor_name');" class="glyphicon glyphicon-menu-down"></span>
             </div>
         </th>
         <th>
             Type
             <div data-ng-click="sortItems('type_name');">
-                <span ng-if="sorts.status[2] == 0 || sorts.status[2] == 2" class="glyphicon glyphicon-menu-up mt5"></span>
-                <span ng-if="sorts.status[2] == 0 || sorts.status[2] == 1" class="glyphicon glyphicon-menu-down"></span>
+                <span ng-if="hasMenuUp('type_name');" class="glyphicon glyphicon-menu-up mt5"></span>
+                <span ng-if="hasMenuDown('type_name');" class="glyphicon glyphicon-menu-down"></span>
             </div>
         </th>
         <th>
             Serial number
             <div data-ng-click="sortItems('serial_number');">
-                <span ng-if="sorts.status[3] == 0 || sorts.status[3] == 2" class="glyphicon glyphicon-menu-up mt5"></span>
-                <span ng-if="sorts.status[3] == 0 || sorts.status[3] == 1" class="glyphicon glyphicon-menu-down"></span>
+                <span ng-if="hasMenuUp('serial_number');" class="glyphicon glyphicon-menu-up mt5"></span>
+                <span ng-if="hasMenuDown('serial_number');" class="glyphicon glyphicon-menu-down"></span>
             </div>
         </th>
         <th>
             Price
             <div data-ng-click="sortItems('price');">
-                <span ng-if="sorts.status[4] == 0 || sorts.status[4] == 2" class="glyphicon glyphicon-menu-up mt5"></span>
-                <span ng-if="sorts.status[4] == 0 || sorts.status[4] == 1" class="glyphicon glyphicon-menu-down"></span>
+                <span ng-if="hasMenuUp('price');" class="glyphicon glyphicon-menu-up mt5"></span>
+                <span ng-if="hasMenuDown('price');" class="glyphicon glyphicon-menu-down"></span>
             </div>
         </th>
         <th>
             Weight
             <div data-ng-click="sortItems('weight');">
-                <span ng-if="sorts.status[5] == 0 || sorts.status[5] == 2" class="glyphicon glyphicon-menu-up mt5"></span>
-                <span ng-if="sorts.status[5] == 0 || sorts.status[5] == 1" class="glyphicon glyphicon-menu-down"></span>
+                <span ng-if="hasMenuUp('weight');" class="glyphicon glyphicon-menu-up mt5"></span>
+                <span ng-if="hasMenuDown('weight');" class="glyphicon glyphicon-menu-down"></span>
             </div>
         </th>
         <th>
             Color
             <div data-ng-click="sortItems('color');">
-                <span ng-if="sorts.status[6] == 0 || sorts.status[6] == 2" class="glyphicon glyphicon-menu-up mt5"></span>
-                <span ng-if="sorts.status[6] == 0 || sorts.status[6] == 1" class="glyphicon glyphicon-menu-down"></span>
+                <span ng-if="hasMenuUp('color');" class="glyphicon glyphicon-menu-up mt5"></span>
+                <span ng-if="hasMenuDown('color');" class="glyphicon glyphicon-menu-down"></span>
             </div>
         </th>
         <th>
             Release date
             <div data-ng-click="sortItems('release_date');">
-                <span ng-if="sorts.status[7] == 0 || sorts.status[7] == 2" class="glyphicon glyphicon-menu-up mt5"></span>
-                <span ng-if="sorts.status[7] == 0 || sorts.status[7] == 1" class="glyphicon glyphicon-menu-down"></span>
+                <span ng-if="hasMenuUp('release_date');" class="glyphicon glyphicon-menu-up mt5"></span>
+                <span ng-if="hasMenuDown('release_date');" class="glyphicon glyphicon-menu-down"></span>
             </div>
         </th>
         <th>
             Photo
             <div data-ng-click="sortItems('photo');">
-                <span ng-if="sorts.status[8] == 0 || sorts.status[8] == 2" class="glyphicon glyphicon-menu-up mt5"></span>
-                <span ng-if="sorts.status[8] == 0 || sorts.status[8] == 1" class="glyphicon glyphicon-menu-down"></span>
+                <span ng-if="hasMenuUp('photo');" class="glyphicon glyphicon-menu-up mt5"></span>
+                <span ng-if="hasMenuDown('photo');" class="glyphicon glyphicon-menu-down"></span>
             </div>
         </th>
     </tr>

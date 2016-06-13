@@ -166,6 +166,7 @@
                 $scope.totalItems = total;
                 $scope.averagePrice = sumPrice/total;
                 $scope.items = $scope.formatData(items);
+                console.log($scope.items);
             });
         }
     ]);

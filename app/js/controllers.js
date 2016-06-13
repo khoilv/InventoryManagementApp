@@ -62,12 +62,12 @@
             };
 
             // get and show all products
-            dbService.getAll(OBJECT_STORE_NAME_PRODUCT, function (items) {
+            dbService.getAllPublishedItems(function (items) {
                 $scope.items = $scope.formatData(items);
             });
 
             // get and show the 5 latest products
-            dbService.getLatestItems(function (items) {
+            dbService.getLatestPublishedItems(function (items) {
                 if (Array.isArray(items) && items.length > 0) {
                     var i, length = items.length, item = null;
                     for (i = 0; i < length; i++) {
@@ -83,7 +83,7 @@
             $scope.searchItems = function (searchValue) {
                 var index = searchValue.indexOf('.');
                 if (index > 0) searchValue = searchValue.substring(0, index);
-                dbService.searchItems(searchValue, function (items) {
+                dbService.searchPublishedItems(searchValue, function (items) {
                     resetSort();
                     $scope.items = $scope.formatData(items);
                 });

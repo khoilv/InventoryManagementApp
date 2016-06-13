@@ -65,8 +65,8 @@
                 });
             };
 
-            var getAll = function (type, callback) {
-                $indexedDB.openStore(type, function (store) {
+            var getAllPublishedItems = function (callback) {
+                $indexedDB.openStore(OBJECT_STORE_NAME_PRODUCT, function (store) {
                     store.getAll().then(function (items) {
                         var data = [];
                         if (Array.isArray(items) && items.length > 0) {
@@ -81,7 +81,7 @@
                 });
             };
 
-            var searchItems = function (searchValue, callback) {
+            var searchPublishedItems = function (searchValue, callback) {
                 $indexedDB.openStore(OBJECT_STORE_NAME_PRODUCT, function (store) {
                     store.getAll().then(function (items) {
                         var data = [], searchKey = null;
@@ -100,7 +100,7 @@
                 });
             };
 
-            var getLatestItems = function (callback) {
+            var getLatestPublishedItems = function (callback) {
                 $indexedDB.openStore(OBJECT_STORE_NAME_PRODUCT, function (store) {
                     var find = store.query().$index("release_date_idx").$desc(false);
                     store.findWhere(find).then(function (e) {
@@ -116,11 +116,11 @@
                 });
             };
 
-            var countAllItems = function (callback) {
-                $indexedDB.openStore(OBJECT_STORE_NAME_PRODUCT, function (store) {
-                    store.count().then(function (e) {
+            var getAll = function (type, callback) {
+                $indexedDB.openStore(type, function (store) {
+                    store.getAll().then(function (items) {
                         if (typeof callback === 'function') {
-                            callback(e);
+                            callback(items);
                         }
                     });
                 });
@@ -145,10 +145,10 @@
 
             return {
                 initDb: initDb,
+                getAllPublishedItems: getAllPublishedItems,
+                searchPublishedItems: searchPublishedItems,
+                getLatestPublishedItems: getLatestPublishedItems,
                 getAll: getAll,
-                searchItems: searchItems,
-                getLatestItems: getLatestItems,
-                countAllItems: countAllItems,
                 getVendor: getVendor,
                 getType: getType
             }

@@ -59,6 +59,7 @@
                 var index = searchValue.indexOf('.');
                 if (index > 0) searchValue = searchValue.substring(0, index);
                 dbService.searchItems(searchValue, function (items) {
+                    resetSort();
                     $scope.items = formatData(items);
                 });
             };
@@ -79,15 +80,17 @@
                 if (index != -1) removeOrderByField(index);
                 index = $scope.sorts.field.indexOf(fieldName);
                 status = $scope.sorts.status[index];
-                if (status == ORDER_BY_NONE || status == ORDER_BY_DESC) {
+                if (status == ORDER_BY_NONE) {
                     status = ORDER_BY_ASC;
                     $scope.sorts.priority.push(fieldName);
                 } else if (status == ORDER_BY_ASC) {
                     status = ORDER_BY_DESC;
                     $scope.sorts.priority.push('-' + fieldName);
+                } else if (status == ORDER_BY_DESC) {
+                    status = ORDER_BY_NONE;
                 }
                 $scope.sorts.status[index] = status;
-                //console.log($scope.sorts.priority);
+                console.log($scope.sorts.priority);
             };
 
             function formatData(items) {
@@ -113,6 +116,14 @@
                 $scope.sorts.priority = $scope.sorts.priority.filter(function (element) {
                     return !!element;
                 });
+            }
+
+            function resetSort() {
+                $scope.sorts = {
+                    field: ['name', 'vendor_name', 'type_name', 'serial_number', 'price', 'weight', 'color', 'release_date', 'photo'],
+                    status: [ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE],
+                    priority: []
+                };
             }
         }
     ]);

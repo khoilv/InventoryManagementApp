@@ -8,7 +8,17 @@
      * Application controller
      */
     imControllers.controller('appCtrl', ['$scope', function ($scope) {
-
+        $scope.homeActive = 'active';
+        $scope.dashboardActive = '';
+        $scope.onMenuSelect = function (menu) {
+            if (menu == 'home') {
+                $scope.homeActive = 'active';
+                $scope.dashboardActive = '';
+            } else {
+                $scope.homeActive = '';
+                $scope.dashboardActive = 'active';
+            }
+        }
     }]);
 
     /**
@@ -27,6 +37,7 @@
         'ORDER_BY_DESC',
         function ($scope, $filter, dbService, formatDate, OBJECT_STORE_NAME_PRODUCT, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE, ORDER_BY_NONE, ORDER_BY_ASC, ORDER_BY_DESC) {
             dbService.initDb();
+            $scope.active = 'active';
             $scope.items = null;
             $scope.latestItems = null;
             $scope.searchText = '';

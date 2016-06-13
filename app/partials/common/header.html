@@ -2,14 +2,14 @@
     <h2 class="pull-left">Inventory Management</h2>
     <nav class="pull-right">
         <ul>
-            <li class="active">
-                <a href="#!home">
+            <li ng-class="homeActive">
+                <a href="#!home" data-ng-click="onMenuSelect('home');">
                     <span class="glyphicon glyphicon-home"></span>
                     <span>Homepage</span>
                 </a>
             </li>
-            <li>
-                <a href="#!dashboard">
+            <li ng-class="dashboardActive">
+                <a href="#!dashboard" data-ng-click="onMenuSelect('dashboard');">
                     <span class="glyphicon glyphicon-user"></span>
                     <span>Dashboard</span>
                 </a>

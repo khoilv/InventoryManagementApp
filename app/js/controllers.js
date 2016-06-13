@@ -155,6 +155,8 @@
             $scope.totalItems = null;
             $scope.averagePrice = null;
             $scope.items = null;
+            $scope.activeProductList = 'active-tab';
+            $scope.activeVendorList = '';
 
             // get and show all products
             dbService.getAll(OBJECT_STORE_NAME_PRODUCT, function (items) {
@@ -166,6 +168,16 @@
                 $scope.averagePrice = sumPrice/total;
                 $scope.items = $scope.formatData(items);
             });
+
+            $scope.onTabChange = function (tab) {
+                if (tab == 'product') {
+                    $scope.activeProductList = 'active-tab';
+                    $scope.activeVendorList = '';
+                } else {
+                    $scope.activeProductList = '';
+                    $scope.activeVendorList = 'active-tab';
+                }
+            };
         }
     ]);
 

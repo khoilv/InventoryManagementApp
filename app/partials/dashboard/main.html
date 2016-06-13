@@ -14,13 +14,13 @@
             <div class="clearfix"></div>
         </div>
         <ul class="nav nav-pills mt30">
-            <li class="active-tab"><a class="btn-default" data-toggle="pill" href="javascript:void(0);">Product</a></li>
-            <li><a class="btn-default" data-toggle="pill" href="javascript:void(0);">Vendor</a></li>
+            <li ng-class="activeProductList"><a class="btn-default" data-toggle="pill" href="javascript:void(0);" data-ng-click="onTabChange('product');">Product</a></li>
+            <li ng-class="activeVendorList"><a class="btn-default" data-toggle="pill" href="javascript:void(0);" data-ng-click="onTabChange('vendor');">Vendor</a></li>
         </ul>
         <div class="tab-content">
             <div class="pull-right"><a href="javascript:void(0);" class="btn btn-success" style="margin: 0;">Add</a></div>
-            <div id="product" data-ng-include="'partials/dashboard/product_list.html'" class="tab-pane fade in active"></div>
-            <div id="vendor" data-ng-include="'partials/dashboard/vendor_list.html'" class="tab-pane fade"></div>
+            <div id="product" ng-if="activeProductList == 'active-tab'" data-ng-include="'partials/dashboard/product_list.html'" class="tab-pane fade in active"></div>
+            <div id="vendor" ng-if="activeVendorList == 'active-tab'" data-ng-include="'partials/dashboard/vendor_list.html'" class="tab-pane fade in active"></div>
             <div data-ng-include="'partials/dashboard/modal/product.html'"></div>
             <div data-ng-include="'partials/dashboard/modal/vendor.html'"></div>
             <div data-ng-include="'partials/dashboard/modal/delete.html'"></div>

@@ -147,11 +147,12 @@
      */
     imControllers.controller('dashboardCtrl', [
         '$scope',
+        '$uibModal',
         'dbService',
         'OBJECT_STORE_NAME_PRODUCT',
         'OBJECT_STORE_NAME_VENDOR',
         'OBJECT_STORE_NAME_TYPE',
-        function ($scope, dbService, OBJECT_STORE_NAME_PRODUCT, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
+        function ($scope, $uibModal, dbService, OBJECT_STORE_NAME_PRODUCT, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
             $scope.totalItems = null;
             $scope.averagePrice = null;
             $scope.items = null;
@@ -184,7 +185,43 @@
                     });
                 }
             };
+
+            $scope.openModal = function (mode, type) {
+                if (mode == 'edit') {
+                    if (type == 'product') {
+                        var modalInstance = $uibModal.open({
+                            animation: true,
+                            templateUrl: 'modalContentProduct.html',
+                            controller: 'ModalProductInstanceCtrl'
+                        });
+                    } else if (type == 'vendor') {
+                        var modalInstance = $uibModal.open({
+                            animation: true,
+                            templateUrl: 'modalContentVendor.html',
+                            controller: 'ModalVendorInstanceCtrl'
+                        });
+                    }
+                } else if (mode == 'delete') {
+                    var modalInstance = $uibModal.open({
+                        animation: true,
+                        templateUrl: 'modalContentDelete.html',
+                        controller: 'ModalDeleteInstanceCtrl'
+                    });
+                }
+            }
         }
     ]);
+
+    imControllers.controller('ModalProductInstanceCtrl', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
+        
+    }]);
+
+    imControllers.controller('ModalVendorInstanceCtrl', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
+
+    }]);
+
+    imControllers.controller('ModalDeleteInstanceCtrl', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
+
+    }]);
 
 })(window, window.angular);

@@ -31,8 +31,8 @@
         <td><img ng-src="{{item.photo}}"></td>
         <td>{{item.created_date | date: 'MM/dd/yyyy'}}</td>
         <td>
-            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#edit-product"><span class="glyphicon glyphicon-pencil"></span></a>
-            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-remove"></span></a>
+            <button type="button" class="btn btn-primary" data-ng-click="openModal('edit', 'product');"><span class="glyphicon glyphicon-pencil"></span></button>
+            <button type="button" class="btn btn-danger" data-ng-click="openModal('delete', 'product');"><span class="glyphicon glyphicon-remove"></span></button>
         </td>
     </tr>
     </tbody>

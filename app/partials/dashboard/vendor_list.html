@@ -13,8 +13,8 @@
         <td>{{item.name}}</td>
         <td><img ng-src="{{item.logo}}"></td>
         <td>
-            <a href="#" data-toggle="modal" data-target="#edit-vendor" class="btn btn-primary "><span class="glyphicon glyphicon-pencil"></span></a>
-            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-remove"></span></a>
+            <button type="button" class="btn btn-primary" data-ng-click="openModal('edit', 'vendor');"><span class="glyphicon glyphicon-pencil"></span></button>
+            <button class="btn btn-danger" data-ng-click="openModal('delete', 'vendor');"><span class="glyphicon glyphicon-remove"></span></button>
         </td>
     </tr>
     </tbody>

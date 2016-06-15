@@ -2,7 +2,7 @@
 
 (function (window, angular) {
 
-    var imDirectives = angular.module('imDirectives', ['$uibModal']);
+    var imDirectives = angular.module('imDirectives', []);
 
     imDirectives.directive('modalProduct', function () {
         return {

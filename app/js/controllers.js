@@ -148,11 +148,12 @@
     imControllers.controller('dashboardCtrl', [
         '$scope',
         '$uibModal',
+        '$log',
         'dbService',
         'OBJECT_STORE_NAME_PRODUCT',
         'OBJECT_STORE_NAME_VENDOR',
         'OBJECT_STORE_NAME_TYPE',
-        function ($scope, $uibModal, dbService, OBJECT_STORE_NAME_PRODUCT, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
+        function ($scope, $uibModal, $log, dbService, OBJECT_STORE_NAME_PRODUCT, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
             $scope.totalItems = null;
             $scope.averagePrice = null;
             $scope.items = null;
@@ -186,6 +187,28 @@
                 }
             };
 
+            $scope.addProduct = function () {
+                var dialogInst = $uibModal.open({
+                    animation: true,
+                    templateUrl: 'partials/popup/product.html',
+                    controller: 'PopupAddProductCtrl',
+                    size: 'lg',
+                    resolve: {
+                        selectedProduct: function () {
+                            return $scope.product;
+                        }
+                    }
+                });
+                
+                dialogInst.result.then(function (newProduct) { // function called when modal closed
+                    $log.info(newProduct);
+                    $scope.product = newProduct;
+                }, function () { // function called when modal rejected
+                    $log.info('Modal dismissed at: ' + new Date());
+                });
+            };
+
+            /*
             $scope.openModal = function (mode, type) {
                 if (mode == 'edit') {
                     if (type == 'product') {
@@ -209,9 +232,20 @@
                     });
                 }
             }
+            */
         }
     ]);
 
+    imControllers.controller('PopupAddProductCtrl', ['$scope', '$uibModalInstance', function ($scope, $uiModalInstance) {
+        $scope.submitProduct = function () {
+            $uiModalInstance.close($scope.product);
+        };
+        $scope.cancel = function () {
+            $uiModalInstance.dismiss('cancel');
+        };
+    }]);
+
+    /*
     imControllers.controller('ModalProductInstanceCtrl', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
         
     }]);
@@ -223,5 +257,6 @@
     imControllers.controller('ModalDeleteInstanceCtrl', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
 
     }]);
+    */
 
 })(window, window.angular);

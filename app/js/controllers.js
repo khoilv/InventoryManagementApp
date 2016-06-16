@@ -212,7 +212,7 @@
                     controller: 'PopupEditProductCtrl',
                     size: 'lg',
                     resolve: {
-                        editId: function () {
+                        itemId: function () {
                             return itemId;
                         }
                     }
@@ -271,16 +271,20 @@
         '$scope',
         '$uibModalInstance',
         'dbService',
-        'editId',
+        'itemId',
         'OBJECT_STORE_NAME_VENDOR',
         'OBJECT_STORE_NAME_TYPE',
-        function ($scope, $uiModalInstance, dbService, editId, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
+        function ($scope, $uiModalInstance, dbService, itemId, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
             $scope.vendors = null;
             $scope.types = null;
+            $scope.selectedVendor = null;
+            $scope.selectedType = null;
             $scope.item = null;
 
-            dbService.getItem(editId, function (item) {
+            dbService.getItem(itemId, function (item) {
                 $scope.item = item;
+                $scope.selectedVendor =  item.vendor_id;
+                $scope.selectedType = item.type_id;
             });
             dbService.getAll(OBJECT_STORE_NAME_VENDOR, function (vendors) {
                 $scope.vendors = vendors;

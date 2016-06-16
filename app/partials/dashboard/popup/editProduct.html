@@ -13,18 +13,16 @@
         <div class="form-group">
             <label class="control-label col-sm-3">Vendor:</label>
             <div class="col-sm-9">
-                <select class="form-control" data-ng-model="item.vendor_id">
+                <select class="form-control" data-ng-model="selectedVendor" data-ng-options="vendor.id as vendor.name for vendor in vendors">
                     <option value="">---Please select---</option>
-                    <option data-ng-repeat="vendor in vendors" value="{{vendor.id}}">{{vendor.name}}</option>
                 </select>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-3">Type:</label>
             <div class="col-sm-9">
-                <select class="form-control" data-ng-model="typeId">
+                <select class="form-control" data-ng-model="selectedType" data-ng-options="type.id as type.name for type in types">
                     <option value="">---Please select---</option>
-                    <option data-ng-repeat="type in types" value="{{type.id}}">{{type.name}}</option>
                 </select>
             </div>
         </div>

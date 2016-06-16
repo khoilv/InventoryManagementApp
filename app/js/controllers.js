@@ -281,7 +281,20 @@
             $scope.selectedVendor = null;
             $scope.selectedType = null;
             $scope.item = null;
-            
+
+            $scope.dateOptions = {
+                formatYear: 'yy',
+                maxDate: new Date(2020, 5, 22),
+                minDate: new Date(2000, 1, 1),
+                startingDay: 1
+            };
+            $scope.popup = {
+                opened: false
+            };
+            $scope.open = function() {
+                $scope.popup.opened = true;
+            };
+
             dbService.getItem(itemId, function (item) {
                 $scope.item = item;
                 $scope.selectedVendor =  item.vendor_id;

@@ -53,7 +53,12 @@
         <div class="form-group">
             <label class="control-label col-sm-3">Release date:</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" data-ng-model="item.release_date" placeholder="Enter release date">
+                <p class="input-group">
+                    <input type="text" class="form-control" data-ng-model="item.release_date" uib-datepicker-popup="MM/dd/yyyy" is-open="popup.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open();"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
             </div>
         </div>
         <div class="form-group">

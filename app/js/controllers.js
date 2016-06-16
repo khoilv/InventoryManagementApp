@@ -185,10 +185,9 @@
                     templateUrl: 'partials/dashboard/popup/addProduct.html',
                     controller: 'PopupAddProductCtrl',
                     size: 'lg',
-                    resolve: {
-                    }
+                    resolve: {}
                 });
-                
+
                 modalInst.result.then(function (newItem) { // function called when modal closed
                     $log.info(newItem);
                     $scope.item = newItem;
@@ -225,7 +224,7 @@
                         sumPrice += parseFloat(item.price);
                     });
                     $scope.totalItems = total;
-                    $scope.averagePrice = sumPrice/total;
+                    $scope.averagePrice = sumPrice / total;
                     $scope.items = $scope.formatData(items);
                 });
             }
@@ -301,7 +300,7 @@
             $scope.popup = {
                 opened: false
             };
-            $scope.open = function() {
+            $scope.open = function () {
                 $scope.popup.opened = true;
             };
 

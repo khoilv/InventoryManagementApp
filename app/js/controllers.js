@@ -270,17 +270,18 @@
     imControllers.controller('PopupEditProductCtrl', [
         '$scope',
         '$uibModalInstance',
+        '$log',
         'dbService',
         'itemId',
         'OBJECT_STORE_NAME_VENDOR',
         'OBJECT_STORE_NAME_TYPE',
-        function ($scope, $uiModalInstance, dbService, itemId, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
+        function ($scope, $uiModalInstance, $log, dbService, itemId, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
             $scope.vendors = null;
             $scope.types = null;
             $scope.selectedVendor = null;
             $scope.selectedType = null;
             $scope.item = null;
-
+            
             dbService.getItem(itemId, function (item) {
                 $scope.item = item;
                 $scope.selectedVendor =  item.vendor_id;

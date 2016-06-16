@@ -13,7 +13,7 @@
         <div class="form-group">
             <label class="control-label col-sm-3">Vendor:</label>
             <div class="col-sm-9">
-                <select class="form-control" data-ng-model="selectedVendor" data-ng-options="vendor.id as vendor.name for vendor in vendors">
+                <select class="form-control" data-ng-model="item.vendor_id" data-ng-options="vendor.id as vendor.name for vendor in vendors">
                     <option value="">---Please select---</option>
                 </select>
             </div>
@@ -21,45 +21,45 @@
         <div class="form-group">
             <label class="control-label col-sm-3">Type:</label>
             <div class="col-sm-9">
-                <select class="form-control" data-ng-model="selectedType" data-ng-options="type.id as type.name for type in types">
+                <select class="form-control" data-ng-model="item.type_id" data-ng-options="type.id as type.name for type in types">
                     <option value="">---Please select---</option>
                 </select>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-3" for="serial_number">Serial number:</label>
+            <label class="control-label col-sm-3">Serial number:</label>
             <div class="col-sm-9">
-                <input type="email" class="form-control" id="serial_number" placeholder="Enter serial number">
+                <input type="text" class="form-control" data-ng-model="item.serial_number" placeholder="Enter serial number">
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-3" for="price">Price:</label>
+            <label class="control-label col-sm-3">Price:</label>
             <div class="col-sm-9">
-                <input type="password" class="form-control" id="price" placeholder="Enter password">
+                <input type="text" class="form-control" data-ng-model="item.price" placeholder="Enter price">
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-3" for="weight">Weight:</label>
+            <label class="control-label col-sm-3">Weight:</label>
             <div class="col-sm-9">
-                <input type="password" class="form-control" id="weight" placeholder="Enter weight">
+                <input type="text" class="form-control" data-ng-model="item.weight" placeholder="Enter weight">
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-3" for="color">Color:</label>
+            <label class="control-label col-sm-3">Color:</label>
             <div class="col-sm-9">
-                <input type="password" class="form-control" id="color" placeholder="Enter color">
+                <input type="text" class="form-control" data-ng-model="item.color" placeholder="Enter color">
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-3">Release date:</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" placeholder="Enter release date">
+                <input type="text" class="form-control" data-ng-model="item.release_date" placeholder="Enter release date">
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-3">Photo:</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" placeholder="Enter photo path">
+                <input type="text" class="form-control" data-ng-model="item.photo" placeholder="Enter photo path">
             </div>
         </div>
         <div class="form-group">

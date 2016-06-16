@@ -50,7 +50,7 @@
         'ORDER_BY_ASC',
         'ORDER_BY_DESC',
         function ($scope, $filter, dbService, formatDate, OBJECT_STORE_NAME_PRODUCT, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE, ORDER_BY_NONE, ORDER_BY_ASC, ORDER_BY_DESC) {
-            dbService.initDb();
+            //dbService.initDb();
             $scope.active = 'active';
             $scope.items = null;
             $scope.latestItems = null;
@@ -212,7 +212,8 @@
 
                 modalInst.result.then(function (item) { // function called when modal closed
                     $log.info(item);
-                    dbService.updateItem(item, function () {
+                    dbService.updateItem(item, function (data) {
+                        $log.info(data);
                         showAllItems();
                     });
                 }, function () { // function called when modal rejected

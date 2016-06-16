@@ -128,10 +128,9 @@
 
             var updateItem = function (item, callback) {
                $indexedDB.openStore(OBJECT_STORE_NAME_PRODUCT, function (store) {
-                   store.delete(item.id).then(function () {});
-                   store.insert(item).then(function (e) {
+                   store.upsert(item).then(function (e) {
                        if (typeof callback === 'function') {
-                           callback();
+                           callback(e);
                        }
                    });
                });

@@ -4,33 +4,6 @@
 
     var imFilters = angular.module('imFilters', []);
 
-    imFilters.filter('filterItems', function () {
-       return function (items, searchText) {
-
-           console.log('filterItems');
-
-           if (!angular.isDefined(searchText) || searchText == null || searchText.trim() == '') {
-               return items;
-           }
-           return items.filter(function (item) {
-               if (item.name.indexOf(searchText) >= 0) {
-                   return true;
-               }
-           });
-
-           /*
-           searchText = searchText.toLowerCase();
-           var data = [];
-           angular.forEach(items, function (item) {
-              if (item.price == searchText || item.name.toLowerCase().indexOf(searchText) != -1 || item.color == searchText) {
-                  data.push(item);
-              }
-           });
-           return data;
-           */
-       }
-    });
-
     imFilters.filter('weight', function () {
         return function (w, unit) {
             if (isNaN(w) || w < 0) {

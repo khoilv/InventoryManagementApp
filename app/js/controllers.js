@@ -190,37 +190,36 @@
             $scope.addProduct = function () {
                 var modalInst = $uibModal.open({
                     animation: true,
-                    templateUrl: 'partials/popup/product.html',
+                    templateUrl: 'partials/dashboard/popup/addProduct.html',
                     controller: 'PopupAddProductCtrl',
                     size: 'lg',
                     resolve: {
                     }
                 });
                 
-                modalInst.result.then(function (newProduct) { // function called when modal closed
-                    $log.info(newProduct);
-                    $scope.product = newProduct;
+                modalInst.result.then(function (newItem) { // function called when modal closed
+                    $log.info(newItem);
+                    $scope.item = newItem;
                 }, function () { // function called when modal rejected
                     $log.info('Modal dismissed at: ' + new Date());
                 });
             };
 
-            $scope.editProduct = function (productId) {
+            $scope.editProduct = function (itemId) {
                 var modalInst = $uibModal.open({
                     animation: true,
-                    templateUrl: 'partials/popup/product.html',
+                    templateUrl: 'partials/dashboard/popup/editProduct.html',
                     controller: 'PopupEditProductCtrl',
                     size: 'lg',
                     resolve: {
-                        productId: function () {
-                            return productId;
+                        editId: function () {
+                            return itemId;
                         }
                     }
                 });
 
-                modalInst.result.then(function (newProduct) { // function called when modal closed
-                    $log.info(newProduct);
-                    $scope.product = newProduct;
+                modalInst.result.then(function (item) { // function called when modal closed
+                    $log.info(item);
                 }, function () { // function called when modal rejected
                     $log.info('Modal dismissed at: ' + new Date());
                 });
@@ -237,7 +236,20 @@
         function ($scope, $uiModalInstance, dbService, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
             $scope.vendors = null;
             $scope.types = null;
-            $scope.product = {};
+            $scope.item = {
+                id: 0,
+                name: null,
+                vendor_id: null,
+                type_id: null,
+                serial_number: null,
+                price: null,
+                weight: null,
+                color: null,
+                release_date: null,
+                published: 0,
+                photo: null,
+                created_date: null
+            };
 
             dbService.getAll(OBJECT_STORE_NAME_VENDOR, function (vendors) {
                 $scope.vendors = vendors;
@@ -247,7 +259,7 @@
             });
 
             $scope.submitProduct = function () {
-                $uiModalInstance.close($scope.product);
+                $uiModalInstance.close($scope.item);
             };
             $scope.cancel = function () {
                 $uiModalInstance.dismiss('cancel');
@@ -259,14 +271,17 @@
         '$scope',
         '$uibModalInstance',
         'dbService',
-        'productId',
+        'editId',
         'OBJECT_STORE_NAME_VENDOR',
         'OBJECT_STORE_NAME_TYPE',
-        function ($scope, $uiModalInstance, dbService, productId, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
+        function ($scope, $uiModalInstance, dbService, editId, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
             $scope.vendors = null;
             $scope.types = null;
-            $scope.product = {};
+            $scope.item = null;
 
+            dbService.getItem(editId, function (item) {
+                $scope.item = item;
+            });
             dbService.getAll(OBJECT_STORE_NAME_VENDOR, function (vendors) {
                 $scope.vendors = vendors;
             });
@@ -275,7 +290,7 @@
             });
 
             $scope.submitProduct = function () {
-                $uiModalInstance.close($scope.product);
+                $uiModalInstance.close($scope.item);
             };
             $scope.cancel = function () {
                 $uiModalInstance.dismiss('cancel');

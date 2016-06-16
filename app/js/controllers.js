@@ -188,19 +188,16 @@
             };
 
             $scope.addProduct = function () {
-                var dialogInst = $uibModal.open({
+                var modalInst = $uibModal.open({
                     animation: true,
                     templateUrl: 'partials/popup/product.html',
                     controller: 'PopupAddProductCtrl',
                     size: 'lg',
                     resolve: {
-                        selectedProduct: function () {
-                            return $scope.product;
-                        }
                     }
                 });
                 
-                dialogInst.result.then(function (newProduct) { // function called when modal closed
+                modalInst.result.then(function (newProduct) { // function called when modal closed
                     $log.info(newProduct);
                     $scope.product = newProduct;
                 }, function () { // function called when modal rejected
@@ -208,55 +205,82 @@
                 });
             };
 
-            /*
-            $scope.openModal = function (mode, type) {
-                if (mode == 'edit') {
-                    if (type == 'product') {
-                        var modalInstance = $uibModal.open({
-                            animation: true,
-                            templateUrl: 'modalContentProduct.html',
-                            controller: 'ModalProductInstanceCtrl'
-                        });
-                    } else if (type == 'vendor') {
-                        var modalInstance = $uibModal.open({
-                            animation: true,
-                            templateUrl: 'modalContentVendor.html',
-                            controller: 'ModalVendorInstanceCtrl'
-                        });
+            $scope.editProduct = function (productId) {
+                var modalInst = $uibModal.open({
+                    animation: true,
+                    templateUrl: 'partials/popup/product.html',
+                    controller: 'PopupEditProductCtrl',
+                    size: 'lg',
+                    resolve: {
+                        productId: function () {
+                            return productId;
+                        }
                     }
-                } else if (mode == 'delete') {
-                    var modalInstance = $uibModal.open({
-                        animation: true,
-                        templateUrl: 'modalContentDelete.html',
-                        controller: 'ModalDeleteInstanceCtrl'
-                    });
-                }
-            }
-            */
+                });
+
+                modalInst.result.then(function (newProduct) { // function called when modal closed
+                    $log.info(newProduct);
+                    $scope.product = newProduct;
+                }, function () { // function called when modal rejected
+                    $log.info('Modal dismissed at: ' + new Date());
+                });
+            };
         }
     ]);
 
-    imControllers.controller('PopupAddProductCtrl', ['$scope', '$uibModalInstance', function ($scope, $uiModalInstance) {
-        $scope.submitProduct = function () {
-            $uiModalInstance.close($scope.product);
-        };
-        $scope.cancel = function () {
-            $uiModalInstance.dismiss('cancel');
-        };
-    }]);
+    imControllers.controller('PopupAddProductCtrl', [
+        '$scope',
+        '$uibModalInstance',
+        'dbService',
+        'OBJECT_STORE_NAME_VENDOR',
+        'OBJECT_STORE_NAME_TYPE',
+        function ($scope, $uiModalInstance, dbService, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
+            $scope.vendors = null;
+            $scope.types = null;
+            $scope.product = {};
 
-    /*
-    imControllers.controller('ModalProductInstanceCtrl', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
-        
-    }]);
+            dbService.getAll(OBJECT_STORE_NAME_VENDOR, function (vendors) {
+                $scope.vendors = vendors;
+            });
+            dbService.getAll(OBJECT_STORE_NAME_TYPE, function (types) {
+                $scope.types = types;
+            });
 
-    imControllers.controller('ModalVendorInstanceCtrl', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
+            $scope.submitProduct = function () {
+                $uiModalInstance.close($scope.product);
+            };
+            $scope.cancel = function () {
+                $uiModalInstance.dismiss('cancel');
+            };
+        }
+    ]);
 
-    }]);
+    imControllers.controller('PopupEditProductCtrl', [
+        '$scope',
+        '$uibModalInstance',
+        'dbService',
+        'productId',
+        'OBJECT_STORE_NAME_VENDOR',
+        'OBJECT_STORE_NAME_TYPE',
+        function ($scope, $uiModalInstance, dbService, productId, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
+            $scope.vendors = null;
+            $scope.types = null;
+            $scope.product = {};
 
-    imControllers.controller('ModalDeleteInstanceCtrl', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
+            dbService.getAll(OBJECT_STORE_NAME_VENDOR, function (vendors) {
+                $scope.vendors = vendors;
+            });
+            dbService.getAll(OBJECT_STORE_NAME_TYPE, function (types) {
+                $scope.types = types;
+            });
 
-    }]);
-    */
+            $scope.submitProduct = function () {
+                $uiModalInstance.close($scope.product);
+            };
+            $scope.cancel = function () {
+                $uiModalInstance.dismiss('cancel');
+            };
+        }
+    ]);
 
 })(window, window.angular);

@@ -271,11 +271,12 @@
         '$scope',
         '$uibModalInstance',
         '$log',
+        'convertDate',
         'dbService',
         'itemId',
         'OBJECT_STORE_NAME_VENDOR',
         'OBJECT_STORE_NAME_TYPE',
-        function ($scope, $uiModalInstance, $log, dbService, itemId, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
+        function ($scope, $uiModalInstance, $log, convertDate, dbService, itemId, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
             $scope.vendors = null;
             $scope.types = null;
             $scope.selectedVendor = null;
@@ -308,6 +309,7 @@
             });
 
             $scope.submitProduct = function () {
+                $scope.item.release_date = convertDate($scope.item.release_date);
                 $uiModalInstance.close($scope.item);
             };
             $scope.cancel = function () {

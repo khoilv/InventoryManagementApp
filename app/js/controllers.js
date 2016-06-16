@@ -161,15 +161,7 @@
             $scope.activeVendorList = '';
 
             // get and show all products
-            dbService.getAll(OBJECT_STORE_NAME_PRODUCT, function (items) {
-                var sumPrice = 0, total = items.length;
-                angular.forEach(items, function (item) {
-                   sumPrice += parseFloat(item.price);
-                });
-                $scope.totalItems = total;
-                $scope.averagePrice = sumPrice/total;
-                $scope.items = $scope.formatData(items);
-            });
+            showAllItems();
 
             $scope.onTabChange = function (tab) {
                 if (tab == 'product') {
@@ -220,10 +212,25 @@
 
                 modalInst.result.then(function (item) { // function called when modal closed
                     $log.info(item);
+                    dbService.updateItem(item, function () {
+                        showAllItems();
+                    });
                 }, function () { // function called when modal rejected
                     $log.info('Modal dismissed at: ' + new Date());
                 });
             };
+
+            function showAllItems() {
+                dbService.getAll(OBJECT_STORE_NAME_PRODUCT, function (items) {
+                    var sumPrice = 0, total = items.length;
+                    angular.forEach(items, function (item) {
+                        sumPrice += parseFloat(item.price);
+                    });
+                    $scope.totalItems = total;
+                    $scope.averagePrice = sumPrice/total;
+                    $scope.items = $scope.formatData(items);
+                });
+            }
         }
     ]);
 

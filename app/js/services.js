@@ -126,6 +126,17 @@
                 });
             };
 
+            var updateItem = function (item, callback) {
+               $indexedDB.openStore(OBJECT_STORE_NAME_PRODUCT, function (store) {
+                   store.delete(item.id).then(function () {});
+                   store.insert(item).then(function (e) {
+                       if (typeof callback === 'function') {
+                           callback();
+                       }
+                   });
+               });
+            };
+
             var getAll = function (type, callback) {
                 $indexedDB.openStore(type, function (store) {
                     store.getAll().then(function (items) {
@@ -159,6 +170,7 @@
                 searchPublishedItems: searchPublishedItems,
                 getLatestPublishedItems: getLatestPublishedItems,
                 getItem: getItem,
+                updateItem: updateItem,
                 getAll: getAll,
                 getVendor: getVendor,
                 getType: getType

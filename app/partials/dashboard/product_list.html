@@ -27,7 +27,7 @@
         <td>{{item.weight | weight: 'g'}}</td>
         <td>{{item.color}}</td>
         <td>{{item.release_date | date: 'MM/dd/yyyy'}}</td>
-        <td>{{item.published == 1 ? 'yes' : 'no'}}</td>
+        <td>{{item.published == true ? 'yes' : 'no'}}</td>
         <td><img ng-src="{{item.photo}}"></td>
         <td>{{item.created_date | date: 'MM/dd/yyyy'}}</td>
         <td>

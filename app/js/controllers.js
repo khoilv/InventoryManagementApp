@@ -211,11 +211,8 @@
                 });
 
                 modalInst.result.then(function (item) { // function called when modal closed
-                    $log.info(item);
-                    dbService.updateItem(item, function (data) {
-                        $log.info(data);
-                        showItemList();
-                    });
+                    //$log.info(item);
+                    dbService.updateItem(item, showItemList);
                 }, function () { // function called when modal rejected
                     $log.info('Modal dismissed at: ' + new Date());
                 });

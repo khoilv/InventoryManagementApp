@@ -130,10 +130,20 @@
                $indexedDB.openStore(OBJECT_STORE_NAME_PRODUCT, function (store) {
                    store.upsert(item).then(function (e) {
                        if (typeof callback === 'function') {
-                           callback(e);
+                           callback();
                        }
                    });
                });
+            };
+
+            var deleteItem = function (itemId, callback) {
+                $indexedDB.openStore(OBJECT_STORE_NAME_PRODUCT, function (store) {
+                    store.delete(itemId).then(function () {
+                        if (typeof callback === 'function') {
+                            callback();
+                        }
+                    })
+                });
             };
 
             var getAll = function (type, callback) {
@@ -170,6 +180,7 @@
                 getLatestPublishedItems: getLatestPublishedItems,
                 getItem: getItem,
                 updateItem: updateItem,
+                deleteItem: deleteItem,
                 getAll: getAll,
                 getVendor: getVendor,
                 getType: getType

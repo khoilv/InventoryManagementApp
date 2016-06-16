@@ -161,7 +161,7 @@
             $scope.activeVendorList = '';
 
             // get and show all products
-            showAllItems();
+            showItemList();
 
             $scope.onTabChange = function (tab) {
                 if (tab == 'product') {
@@ -214,14 +214,14 @@
                     $log.info(item);
                     dbService.updateItem(item, function (data) {
                         $log.info(data);
-                        showAllItems();
+                        showItemList();
                     });
                 }, function () { // function called when modal rejected
                     $log.info('Modal dismissed at: ' + new Date());
                 });
             };
 
-            function showAllItems() {
+            function showItemList() {
                 dbService.getAll(OBJECT_STORE_NAME_PRODUCT, function (items) {
                     var sumPrice = 0, total = items.length;
                     angular.forEach(items, function (item) {

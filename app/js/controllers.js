@@ -235,6 +235,9 @@
         }
     ]);
 
+    /**
+     * PopupAddProduct controller
+     */
     imControllers.controller('PopupAddProductCtrl', [
         '$scope',
         '$uibModalInstance',
@@ -275,6 +278,9 @@
         }
     ]);
 
+    /**
+     * PopupEditProduct controller
+     */
     imControllers.controller('PopupEditProductCtrl', [
         '$scope',
         '$uibModalInstance',

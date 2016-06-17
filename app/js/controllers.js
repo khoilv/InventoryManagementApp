@@ -11,6 +11,9 @@
         $scope.homeActive = 'active';
         $scope.dashboardActive = '';
 
+        // initialize Database
+        //dbService.initDb();
+
         $scope.onMenuSelect = function (menu) {
             if (menu == 'home') {
                 $scope.homeActive = 'active';
@@ -58,8 +61,6 @@
                 status: [ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE],
                 priority: []
             };
-
-            //dbService.initDb();
 
             // get and show all products
             dbService.getAllPublishedItems(function (items) {

@@ -188,7 +188,7 @@
                     resolve: {} // resolve (Type: Object) - Members that will be resolved and passed to the controller as locals;
                 });
                 modalInstance.result.then(function (item) { // function called when modal closed
-                    dbService.upsertItem(item, showItemList);
+                    dbService.upsertItem(item, OBJECT_STORE_NAME_PRODUCT, showItemList);
                 }, function () { // function called when modal rejected
                     $log.info('Add product modal dismissed at: ' + new Date());
                 });
@@ -207,7 +207,7 @@
                     }
                 });
                 modalInstance.result.then(function (item) { // function called when modal closed
-                    dbService.upsertItem(item, showItemList);
+                    dbService.upsertItem(item, OBJECT_STORE_NAME_PRODUCT, showItemList);
                 }, function () { // function called when modal rejected
                     $log.info('Edit product modal dismissed at: ' + new Date());
                 });
@@ -229,7 +229,7 @@
                     }
                 });
                 modalInstance.result.then(function (id) { // function called when modal closed
-                    dbService.deleteItem(id, showItemList);
+                    dbService.deleteItem(id, OBJECT_STORE_NAME_PRODUCT, showItemList);
                 }, function () { // function called when modal rejected
                     $log.info('Delete product modal dismissed at: ' + new Date());
                 });
@@ -254,7 +254,7 @@
                 modalInstance.result.then(function (vendor) {
 
                 }, function () {
-
+                    $log.info('Vendor edit modal dismissed at: ' + new Date());
                 });
             };
 
@@ -341,9 +341,10 @@
         'utilService',
         'dbService',
         'itemId', // pass in a parameter
+        'OBJECT_STORE_NAME_PRODUCT',
         'OBJECT_STORE_NAME_VENDOR',
         'OBJECT_STORE_NAME_TYPE',
-        function ($scope, $uibModalInstance, $log, utilService, dbService, itemId, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
+        function ($scope, $uibModalInstance, $log, utilService, dbService, itemId, OBJECT_STORE_NAME_PRODUCT, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
             $scope.vendors = null;
             $scope.types = null;
             $scope.item = null;
@@ -361,7 +362,7 @@
                 $scope.popup.opened = true;
             };
 
-            dbService.getItem(itemId, function (item) {
+            dbService.getItem(itemId, OBJECT_STORE_NAME_PRODUCT, function (item) {
                 $scope.item = item;
             });
             dbService.getAll(OBJECT_STORE_NAME_VENDOR, function (vendors) {
@@ -413,11 +414,20 @@
         '$log',
         'dbService',
         'vendorId', // a passed-in parameter
-        function ($scope, $uibModalInstance, $log, dbService, vendorId) {
+        'OBJECT_STORE_NAME_VENDOR',
+        function ($scope, $uibModalInstance, $log, dbService, vendorId, OBJECT_STORE_NAME_VENDOR) {
             $scope.vendorId = vendorId;
+            $scope.vendor = null;
 
+            dbService.getItem(vendorId, OBJECT_STORE_NAME_VENDOR, function (vendor) {
+                $scope.vendor = vendor;
+            });
+            
             $scope.cancel = function () {
                 $uibModalInstance.dismiss('cancel');
+            };
+            $scope.submitVendor = function () {
+                $uibModalInstance.close($scope.vendor);
             };
         }
     ]);

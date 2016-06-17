@@ -197,8 +197,8 @@
                 });
             };
 
-            var getItem = function (id, callback) {
-                $indexedDB.openStore(OBJECT_STORE_NAME_PRODUCT, function (store) {
+            var getItem = function (id, type, callback) {
+                $indexedDB.openStore(type, function (store) {
                     store.find(id).then(function (e) {
                         if (typeof callback === 'function') {
                             callback(e);
@@ -207,8 +207,9 @@
                 });
             };
 
-            var upsertItem = function (item, callback) {
-                $indexedDB.openStore(OBJECT_STORE_NAME_PRODUCT, function (store) {
+            // EITHER Update OR Insert an item into store
+            var upsertItem = function (item, type, callback) {
+                $indexedDB.openStore(type, function (store) {
                     store.upsert(item).then(function (e) {
                         if (typeof callback === 'function') {
                             callback();
@@ -217,8 +218,8 @@
                 });
             };
 
-            var deleteItem = function (itemId, callback) {
-                $indexedDB.openStore(OBJECT_STORE_NAME_PRODUCT, function (store) {
+            var deleteItem = function (itemId, type, callback) {
+                $indexedDB.openStore(type, function (store) {
                     store.delete(itemId).then(function () {
                         if (typeof callback === 'function') {
                             callback();

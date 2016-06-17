@@ -13,8 +13,8 @@
         <td>{{item.name}}</td>
         <td><img ng-src="{{item.logo}}"></td>
         <td>
-            <button type="button" class="btn btn-primary" data-ng-click="editVendor(vendor.id);"><span class="glyphicon glyphicon-pencil"></span></button>
-            <button class="btn btn-danger" data-ng-click="deleteVendor(vendor.id);"><span class="glyphicon glyphicon-remove"></span></button>
+            <button type="button" class="btn btn-primary" data-ng-click="editVendor(item.id);"><span class="glyphicon glyphicon-pencil"></span></button>
+            <button class="btn btn-danger" data-ng-click="deleteVendor(item.id);"><span class="glyphicon glyphicon-remove"></span></button>
         </td>
     </tr>
     </tbody>

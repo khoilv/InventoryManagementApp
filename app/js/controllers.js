@@ -180,23 +180,22 @@
             };
 
             $scope.addProduct = function () {
-                var modalInst = $uibModal.open({
+                var modalInstance = $uibModal.open({
                     animation: true,
                     templateUrl: 'partials/dashboard/popup/product.html',
                     controller: 'PopupAddProductCtrl',
                     size: 'lg',
-                    resolve: {}
+                    resolve: {} // resolve (Type: Object) - Members that will be resolved and passed to the controller as locals;
                 });
-
-                modalInst.result.then(function (item) { // function called when modal closed
+                modalInstance.result.then(function (item) { // function called when modal closed
                     dbService.upsertItem(item, showItemList);
                 }, function () { // function called when modal rejected
-                    $log.info('Modal dismissed at: ' + new Date());
+                    $log.info('Add product modal dismissed at: ' + new Date());
                 });
             };
 
             $scope.editProduct = function (itemId) {
-                var modalInst = $uibModal.open({
+                var modalInstance = $uibModal.open({
                     animation: true,
                     templateUrl: 'partials/dashboard/popup/product.html',
                     controller: 'PopupEditProductCtrl',
@@ -207,11 +206,29 @@
                         }
                     }
                 });
-
-                modalInst.result.then(function (item) { // function called when modal closed
+                modalInstance.result.then(function (item) { // function called when modal closed
                     dbService.upsertItem(item, showItemList);
                 }, function () { // function called when modal rejected
-                    $log.info('Modal dismissed at: ' + new Date());
+                    $log.info('Edit product modal dismissed at: ' + new Date());
+                });
+            };
+
+            $scope.deleteProduct = function (id) {
+                var modalInstance = $uibModal.open({
+                    animation: true,
+                    templateUrl: 'partials/dashboard/popup/delete.html',
+                    controller: 'PopupDeleteProductCtrl',
+                    size: 'lg',
+                    resolve: {
+                        id: function () {
+                            return id;
+                        }
+                    }
+                });
+                modalInstance.result.then(function (itemId) { // function called when modal closed
+                    dbService.deleteItem(itemId, showItemList);
+                }, function () { // function called when modal rejected
+                    $log.info('Delete product modal dismissed at: ' + new Date());
                 });
             };
 
@@ -240,7 +257,7 @@
         'dbService',
         'OBJECT_STORE_NAME_VENDOR',
         'OBJECT_STORE_NAME_TYPE',
-        function ($scope, $uiModalInstance, $log, utilService, dbService, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
+        function ($scope, $uibModalInstance, $log, utilService, dbService, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
             $scope.vendors = null;
             $scope.types = null;
             $scope.item = {
@@ -280,10 +297,10 @@
 
             $scope.submitProduct = function () {
                 $scope.item.release_date = utilService.convertDate($scope.item.release_date);
-                $uiModalInstance.close($scope.item);
+                $uibModalInstance.close($scope.item);
             };
             $scope.cancel = function () {
-                $uiModalInstance.dismiss('cancel');
+                $uibModalInstance.dismiss('cancel');
             };
         }
     ]);
@@ -297,10 +314,10 @@
         '$log',
         'utilService',
         'dbService',
-        'itemId',
+        'itemId', // pass in a parameter
         'OBJECT_STORE_NAME_VENDOR',
         'OBJECT_STORE_NAME_TYPE',
-        function ($scope, $uiModalInstance, $log, utilService, dbService, itemId, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
+        function ($scope, $uibModalInstance, $log, utilService, dbService, itemId, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
             $scope.vendors = null;
             $scope.types = null;
             $scope.item = null;
@@ -330,10 +347,27 @@
 
             $scope.submitProduct = function () {
                 $scope.item.release_date = utilService.convertDate($scope.item.release_date);
-                $uiModalInstance.close($scope.item);
+                $uibModalInstance.close($scope.item);
             };
             $scope.cancel = function () {
-                $uiModalInstance.dismiss('cancel');
+                $uibModalInstance.dismiss('cancel');
+            };
+        }
+    ]);
+
+    /**
+     * PopupDeleteProduct controller
+     */
+    imControllers.controller('PopupDeleteProductCtrl', [
+        '$scope',
+        '$uibModalInstance',
+        '$log',
+        'dbService',
+        'id', // pass in a parameter
+        function ($scope, $uibModalInstance, $log, dbService, id) {
+            $scope.itemType = 'product';
+            $scope.cancel = function () {
+                $uibModalInstance.dismiss('cancel');
             };
         }
     ]);

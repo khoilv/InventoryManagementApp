@@ -235,6 +235,29 @@
                 });
             };
 
+            $scope.addVendor = function () {
+
+            };
+
+            $scope.editVendor = function (vendorId) {
+                var modalInstance = $uibModal.open({
+                    animation: true,
+                    templateUrl: 'partials/dashboard/popup/vendor.html',
+                    controller: 'PopupVendorCtrl',
+                    size: 'sm',
+                    resolve: {
+                        vendorId: function () {
+                            return vendorId;
+                        }
+                    }
+                });
+                modalInstance.result.then(function (vendor) {
+
+                }, function () {
+
+                });
+            };
+
             function showItemList() {
                 dbService.getAll(OBJECT_STORE_NAME_PRODUCT, function (items) {
                     var sumPrice = 0, total = items.length;
@@ -378,6 +401,20 @@
             $scope.delete = function () {
                 $uibModalInstance.close($scope.id);
             }
+        }
+    ]);
+
+    /**
+     * PopupVendor controller
+     */
+    imControllers.controller('PopupVendorCtrl', [
+        '$scope',
+        '$uibModalInstance',
+        '$log',
+        'dbService',
+        'vendorId', // a passed-in parameter
+        function ($scope, $uibModalInstance, $log, dbService, vendorId) {
+
         }
     ]);
 

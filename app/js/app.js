@@ -14,9 +14,9 @@
     ]);
 
     // application's constants
-    imApp.constant('OBJECT_STORE_NAME_PRODUCT', 'product');
-    imApp.constant('OBJECT_STORE_NAME_VENDOR', 'vendor');
-    imApp.constant('OBJECT_STORE_NAME_TYPE', 'type');
+    imApp.constant('ITEM_TYPE_PRODUCT', 'product');
+    imApp.constant('ITEM_TYPE_VENDOR', 'vendor');
+    imApp.constant('ITEM_TYPE_TYPE', 'type');
     imApp.constant('ORDER_BY_NONE', 0);
     imApp.constant('ORDER_BY_ASC', 1);
     imApp.constant('ORDER_BY_DESC', 2);

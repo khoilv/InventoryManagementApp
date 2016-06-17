@@ -42,13 +42,13 @@
         '$scope',
         '$filter',
         'dbService',
-        'OBJECT_STORE_NAME_PRODUCT',
-        'OBJECT_STORE_NAME_VENDOR',
-        'OBJECT_STORE_NAME_TYPE',
+        'ITEM_TYPE_PRODUCT',
+        'ITEM_TYPE_VENDOR',
+        'ITEM_TYPE_TYPE',
         'ORDER_BY_NONE',
         'ORDER_BY_ASC',
         'ORDER_BY_DESC',
-        function ($scope, $filter, dbService, OBJECT_STORE_NAME_PRODUCT, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE, ORDER_BY_NONE, ORDER_BY_ASC, ORDER_BY_DESC) {
+        function ($scope, $filter, dbService, ITEM_TYPE_PRODUCT, ITEM_TYPE_VENDOR, ITEM_TYPE_TYPE, ORDER_BY_NONE, ORDER_BY_ASC, ORDER_BY_DESC) {
             //dbService.initDb();
             $scope.active = 'active';
             $scope.items = null;
@@ -150,10 +150,10 @@
         '$log',
         'utilService',
         'dbService',
-        'OBJECT_STORE_NAME_PRODUCT',
-        'OBJECT_STORE_NAME_VENDOR',
-        'OBJECT_STORE_NAME_TYPE',
-        function ($scope, $uibModal, $log, utilService, dbService, OBJECT_STORE_NAME_PRODUCT, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
+        'ITEM_TYPE_PRODUCT',
+        'ITEM_TYPE_VENDOR',
+        'ITEM_TYPE_TYPE',
+        function ($scope, $uibModal, $log, utilService, dbService, ITEM_TYPE_PRODUCT, ITEM_TYPE_VENDOR, ITEM_TYPE_TYPE) {
             $scope.totalItems = null;
             $scope.averagePrice = null;
             $scope.items = null;
@@ -167,13 +167,13 @@
                 if (tab == 'product') {
                     $scope.activeProductList = 'active-tab';
                     $scope.activeVendorList = '';
-                    dbService.getAll(OBJECT_STORE_NAME_PRODUCT, function (items) {
+                    dbService.getAll(ITEM_TYPE_PRODUCT, function (items) {
                         $scope.items = $scope.formatData(items);
                     });
                 } else {
                     $scope.activeProductList = '';
                     $scope.activeVendorList = 'active-tab';
-                    dbService.getAll(OBJECT_STORE_NAME_VENDOR, function (items) {
+                    dbService.getAll(ITEM_TYPE_VENDOR, function (items) {
                         $scope.items = items;
                     });
                 }
@@ -188,9 +188,9 @@
                     resolve: {} // resolve (Type: Object) - Members that will be resolved and passed to the controller as locals;
                 });
                 modalInstance.result.then(function (item) { // function called when modal closed
-                    dbService.upsertItem(item, OBJECT_STORE_NAME_PRODUCT, showItemList.bind(this, 'product'));
+                    dbService.upsertItem(item, ITEM_TYPE_PRODUCT, showItemList.bind(this, 'product'));
                 }, function () { // function called when modal rejected
-                    $log.info('Add product modal dismissed at: ' + new Date());
+                    $log.info('Add Product modal dismissed at: ' + new Date());
                 });
             };
 
@@ -207,9 +207,9 @@
                     }
                 });
                 modalInstance.result.then(function (item) { // function called when modal closed
-                    dbService.upsertItem(item, OBJECT_STORE_NAME_PRODUCT, showItemList.bind(this, 'product'));
+                    dbService.upsertItem(item, ITEM_TYPE_PRODUCT, showItemList.bind(this, 'product'));
                 }, function () { // function called when modal rejected
-                    $log.info('Edit product modal dismissed at: ' + new Date());
+                    $log.info('Edit Product modal dismissed at: ' + new Date());
                 });
             };
 
@@ -229,14 +229,29 @@
                     }
                 });
                 modalInstance.result.then(function (id) { // function called when modal closed
-                    dbService.deleteItem(id, OBJECT_STORE_NAME_PRODUCT, showItemList.bind(this, 'product'));
+                    dbService.deleteItem(id, ITEM_TYPE_PRODUCT, showItemList.bind(this, 'product'));
                 }, function () { // function called when modal rejected
-                    $log.info('Delete product modal dismissed at: ' + new Date());
+                    $log.info('Delete Product modal dismissed at: ' + new Date());
                 });
             };
 
             $scope.addVendor = function () {
-
+                var modalInstance = $uibModal.open({
+                    animation: true,
+                    templateUrl: 'partials/dashboard/popup/vendor.html',
+                    controller: 'PopupVendorCtrl',
+                    size: 'sm',
+                    resolve: {
+                        vendorId: function () {
+                            return 0;
+                        }
+                    }
+                });
+                modalInstance.result.then(function (vendor) {
+                    dbService.upsertItem(vendor, ITEM_TYPE_VENDOR, showItemList.bind(this, 'vendor'));
+                }, function () {
+                    $log.info('Add Vendor modal dismissed at: ' + new Date());
+                });
             };
 
             $scope.editVendor = function (vendorId) {
@@ -252,15 +267,15 @@
                     }
                 });
                 modalInstance.result.then(function (vendor) {
-                    dbService.upsertItem(vendor, OBJECT_STORE_NAME_VENDOR, showItemList.bind(this, 'vendor'));
+                    dbService.upsertItem(vendor, ITEM_TYPE_VENDOR, showItemList.bind(this, 'vendor'));
                 }, function () {
-                    $log.info('Vendor edit modal dismissed at: ' + new Date());
+                    $log.info('Edit Vendor modal dismissed at: ' + new Date());
                 });
             };
 
             function showItemList(type) {
                 if (type == 'product') {
-                    dbService.getAll(OBJECT_STORE_NAME_PRODUCT, function (items) {
+                    dbService.getAll(ITEM_TYPE_PRODUCT, function (items) {
                         var sumPrice = 0, total = items.length;
                         angular.forEach(items, function (item) {
                             sumPrice += parseFloat(item.price);
@@ -270,7 +285,7 @@
                         $scope.items = $scope.formatData(items);
                     });
                 } else if (type == 'vendor') {
-                    dbService.getAll(OBJECT_STORE_NAME_VENDOR, function (items) {
+                    dbService.getAll(ITEM_TYPE_VENDOR, function (items) {
                         $scope.items = items;
                     });
                 }
@@ -287,9 +302,9 @@
         '$log',
         'utilService',
         'dbService',
-        'OBJECT_STORE_NAME_VENDOR',
-        'OBJECT_STORE_NAME_TYPE',
-        function ($scope, $uibModalInstance, $log, utilService, dbService, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
+        'ITEM_TYPE_VENDOR',
+        'ITEM_TYPE_TYPE',
+        function ($scope, $uibModalInstance, $log, utilService, dbService, ITEM_TYPE_VENDOR, ITEM_TYPE_TYPE) {
             $scope.vendors = null;
             $scope.types = null;
             $scope.item = {
@@ -320,10 +335,10 @@
                 $scope.popup.opened = true;
             };
 
-            dbService.getAll(OBJECT_STORE_NAME_VENDOR, function (vendors) {
+            dbService.getAll(ITEM_TYPE_VENDOR, function (vendors) {
                 $scope.vendors = vendors;
             });
-            dbService.getAll(OBJECT_STORE_NAME_TYPE, function (types) {
+            dbService.getAll(ITEM_TYPE_TYPE, function (types) {
                 $scope.types = types;
             });
 
@@ -347,10 +362,10 @@
         'utilService',
         'dbService',
         'itemId', // pass in a parameter
-        'OBJECT_STORE_NAME_PRODUCT',
-        'OBJECT_STORE_NAME_VENDOR',
-        'OBJECT_STORE_NAME_TYPE',
-        function ($scope, $uibModalInstance, $log, utilService, dbService, itemId, OBJECT_STORE_NAME_PRODUCT, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
+        'ITEM_TYPE_PRODUCT',
+        'ITEM_TYPE_VENDOR',
+        'ITEM_TYPE_TYPE',
+        function ($scope, $uibModalInstance, $log, utilService, dbService, itemId, ITEM_TYPE_PRODUCT, ITEM_TYPE_VENDOR, ITEM_TYPE_TYPE) {
             $scope.vendors = null;
             $scope.types = null;
             $scope.item = null;
@@ -368,13 +383,13 @@
                 $scope.popup.opened = true;
             };
 
-            dbService.getItem(itemId, OBJECT_STORE_NAME_PRODUCT, function (item) {
+            dbService.getItem(itemId, ITEM_TYPE_PRODUCT, function (item) {
                 $scope.item = item;
             });
-            dbService.getAll(OBJECT_STORE_NAME_VENDOR, function (vendors) {
+            dbService.getAll(ITEM_TYPE_VENDOR, function (vendors) {
                 $scope.vendors = vendors;
             });
-            dbService.getAll(OBJECT_STORE_NAME_TYPE, function (types) {
+            dbService.getAll(ITEM_TYPE_TYPE, function (types) {
                 $scope.types = types;
             });
 
@@ -420,12 +435,12 @@
         '$log',
         'dbService',
         'vendorId', // a passed-in parameter
-        'OBJECT_STORE_NAME_VENDOR',
-        function ($scope, $uibModalInstance, $log, dbService, vendorId, OBJECT_STORE_NAME_VENDOR) {
+        'ITEM_TYPE_VENDOR',
+        function ($scope, $uibModalInstance, $log, dbService, vendorId, ITEM_TYPE_VENDOR) {
             $scope.vendorId = vendorId;
             $scope.vendor = null;
 
-            dbService.getItem(vendorId, OBJECT_STORE_NAME_VENDOR, function (vendor) {
+            dbService.getItem(vendorId, ITEM_TYPE_VENDOR, function (vendor) {
                 $scope.vendor = vendor;
             });
             

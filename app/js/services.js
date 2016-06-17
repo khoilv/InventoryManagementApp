@@ -24,10 +24,10 @@
     imServices.factory('dbService', [
         '$indexedDB',
         'utilService',
-        'OBJECT_STORE_NAME_PRODUCT',
-        'OBJECT_STORE_NAME_VENDOR',
-        'OBJECT_STORE_NAME_TYPE',
-        function ($indexedDB, utilService, OBJECT_STORE_NAME_PRODUCT, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
+        'ITEM_TYPE_PRODUCT',
+        'ITEM_TYPE_VENDOR',
+        'ITEM_TYPE_TYPE',
+        function ($indexedDB, utilService, ITEM_TYPE_PRODUCT, ITEM_TYPE_VENDOR, ITEM_TYPE_TYPE) {
             var initDb = function () {
                 // initialize types
                 var types = [
@@ -35,7 +35,7 @@
                     {"id": 2, "name": "Tablet"},
                     {"id": 3, "name": "Laptop"}
                 ];
-                $indexedDB.openStore(OBJECT_STORE_NAME_TYPE, function (store) {
+                $indexedDB.openStore(ITEM_TYPE_TYPE, function (store) {
                     store.clear().then(function () {
                     });
                     store.insert(types).then(function (e) {
@@ -50,7 +50,7 @@
                     {"id": 4, "name": "Apple", "logo": "img/logo/logo4.jpg"},
                     {"id": 5, "name": "Magic", "logo": "img/logo/logo5.jpg"}
                 ];
-                $indexedDB.openStore(OBJECT_STORE_NAME_VENDOR, function (store) {
+                $indexedDB.openStore(ITEM_TYPE_VENDOR, function (store) {
                     store.clear().then(function () {
                     });
                     store.insert(vendors).then(function (e) {
@@ -138,7 +138,7 @@
                         "created_date": utilService.convertDate('06/07/2016')
                     }
                 ];
-                $indexedDB.openStore(OBJECT_STORE_NAME_PRODUCT, function (store) {
+                $indexedDB.openStore(ITEM_TYPE_PRODUCT, function (store) {
                     store.clear().then(function () {
                     });
                     store.insert(products).then(function (e) {
@@ -147,7 +147,7 @@
             };
 
             var getAllPublishedItems = function (callback) {
-                $indexedDB.openStore(OBJECT_STORE_NAME_PRODUCT, function (store) {
+                $indexedDB.openStore(ITEM_TYPE_PRODUCT, function (store) {
                     store.getAll().then(function (items) {
                         var data = [];
                         if (Array.isArray(items) && items.length > 0) {
@@ -163,7 +163,7 @@
             };
 
             var searchPublishedItems = function (searchValue, callback) {
-                $indexedDB.openStore(OBJECT_STORE_NAME_PRODUCT, function (store) {
+                $indexedDB.openStore(ITEM_TYPE_PRODUCT, function (store) {
                     store.getAll().then(function (items) {
                         var data = [], searchKey = null;
                         angular.forEach(items, function (item) {
@@ -182,7 +182,7 @@
             };
 
             var getLatestPublishedItems = function (callback) {
-                $indexedDB.openStore(OBJECT_STORE_NAME_PRODUCT, function (store) {
+                $indexedDB.openStore(ITEM_TYPE_PRODUCT, function (store) {
                     var find = store.query().$index("release_date_idx").$desc(false);
                     store.findWhere(find).then(function (e) {
                         var data = [];
@@ -239,7 +239,7 @@
             };
 
             var getVendor = function (id, object) {
-                $indexedDB.openStore(OBJECT_STORE_NAME_VENDOR, function (store) {
+                $indexedDB.openStore(ITEM_TYPE_VENDOR, function (store) {
                     store.find(id).then(function (e) {
                         object.vendor_logo = e.logo;
                         object.vendor_name = e.name;
@@ -248,7 +248,7 @@
             };
 
             var getType = function (id, object) {
-                $indexedDB.openStore(OBJECT_STORE_NAME_TYPE, function (store) {
+                $indexedDB.openStore(ITEM_TYPE_TYPE, function (store) {
                     store.find(id).then(function (e) {
                         object.type_name = e.name;
                     });

@@ -5,7 +5,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/controllers.js" afterPath="$PROJECT_DIR$/app/js/controllers.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/partials/dashboard/popup/vendor.html" afterPath="$PROJECT_DIR$/app/partials/dashboard/popup/vendor.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/partials/dashboard/vendor_list.html" afterPath="$PROJECT_DIR$/app/partials/dashboard/vendor_list.html" />
     </list>
     <ignored path="InventoryManagementApp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,11 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="controllers.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="controllers.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/js/controllers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="781">
-              <caret line="261" column="78" selection-start-line="261" selection-start-column="78" selection-end-line="261" selection-end-column="78" />
+            <state relative-caret-position="835">
+              <caret line="413" column="20" selection-start-line="413" selection-start-column="20" selection-end-line="413" selection-end-column="20" />
               <folding>
                 <element signature="e#10999#12824#0" expanded="false" />
                 <element signature="e#14486#14577#0" expanded="false" />
@@ -70,7 +69,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="vendor.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="vendor.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/partials/dashboard/popup/vendor.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="621">
@@ -179,9 +178,9 @@
         <option value="$PROJECT_DIR$/app/partials/dashboard/popup/delete.html" />
         <option value="$PROJECT_DIR$/app/partials/dashboard/product_list.html" />
         <option value="$PROJECT_DIR$/app/partials/dashboard/popup/product.html" />
-        <option value="$PROJECT_DIR$/app/js/controllers.js" />
         <option value="$PROJECT_DIR$/app/partials/dashboard/vendor_list.html" />
         <option value="$PROJECT_DIR$/app/partials/dashboard/popup/vendor.html" />
+        <option value="$PROJECT_DIR$/app/js/controllers.js" />
       </list>
     </option>
   </component>
@@ -438,14 +437,7 @@
       <workItem from="1466017163149" duration="3224000" />
       <workItem from="1466046362710" duration="16007000" />
       <workItem from="1466088600097" duration="8386000" />
-      <workItem from="1466129831751" duration="10432000" />
-    </task>
-    <task id="LOCAL-00029" summary="Commit code">
-      <created>1465808630261</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1465808630261</updated>
+      <workItem from="1466129831751" duration="10569000" />
     </task>
     <task id="LOCAL-00030" summary="Commit code">
       <created>1465809265949</created>
@@ -783,17 +775,24 @@
       <option name="project" value="LOCAL" />
       <updated>1466147163542</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="Commit code">
+      <created>1466147820684</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1466147820684</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100801000" />
+    <option name="totallyTimeSpent" value="100938000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1911" y="-9" width="2578" height="1408" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12579872" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12579872" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -1062,17 +1061,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/controllers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="781">
-          <caret line="261" column="78" selection-start-line="261" selection-start-column="78" selection-end-line="261" selection-end-column="78" />
-          <folding>
-            <element signature="e#10999#12824#0" expanded="false" />
-            <element signature="e#14486#14577#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/partials/dashboard/popup/product.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1321">
@@ -1087,6 +1075,17 @@
           <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
           <folding>
             <element signature="n#style#0;n#div#1;n#form#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/controllers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="835">
+          <caret line="413" column="20" selection-start-line="413" selection-start-column="20" selection-end-line="413" selection-end-column="20" />
+          <folding>
+            <element signature="e#10999#12824#0" expanded="false" />
+            <element signature="e#14486#14577#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -394,7 +394,7 @@
         function ($scope, $uibModalInstance, $log, dbService, id, deleteType) {
             $scope.id = id;
             $scope.itemType = deleteType;
-            
+
             $scope.cancel = function () {
                 $uibModalInstance.dismiss('cancel');
             };
@@ -414,7 +414,11 @@
         'dbService',
         'vendorId', // a passed-in parameter
         function ($scope, $uibModalInstance, $log, dbService, vendorId) {
+            $scope.vendorId = vendorId;
 
+            $scope.cancel = function () {
+                $uibModalInstance.dismiss('cancel');
+            };
         }
     ]);
 

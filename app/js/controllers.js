@@ -228,8 +228,8 @@
                         }
                     }
                 });
-                modalInstance.result.then(function (itemId) { // function called when modal closed
-                    dbService.deleteItem(itemId, showItemList);
+                modalInstance.result.then(function (id) { // function called when modal closed
+                    dbService.deleteItem(id, showItemList);
                 }, function () { // function called when modal rejected
                     $log.info('Delete product modal dismissed at: ' + new Date());
                 });
@@ -359,7 +359,7 @@
     ]);
 
     /**
-     * PopupDeleteProduct controller
+     * PopupDelete controller (common to BOTH delete product AND delete vendor)
      */
     imControllers.controller('PopupDeleteCtrl', [
         '$scope',

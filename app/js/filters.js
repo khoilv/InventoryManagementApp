@@ -15,9 +15,9 @@
         }
     });
 
-    imFilters.filter('formatDate', function () {
-        return function (timestamp) {
-
+    imFilters.filter('capitalize', function () {
+        return function (input) {
+            return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
         }
     });
 
@@ -29,14 +29,14 @@
      *
      * Usage: {{ 25 | customCurrency:'$':false }}
      */
-    imFilters.filter('customCurrency', function() {
+    imFilters.filter('customCurrency', function () {
 
         // Create the return function and set the required parameter name to **input**
         // setup optional parameters for the currency symbol and location (left or right of the amount)
-        return function(input, symbol, place) {
+        return function (input, symbol, place) {
 
             // Ensure that we are working with a number
-            if(isNaN(input)) {
+            if (isNaN(input)) {
                 return input;
             } else {
 
@@ -45,7 +45,7 @@
                 place = place === undefined ? true : place;
 
                 // Perform the operation to set the symbol in the right location
-                if( place === true) {
+                if (place === true) {
                     return symbol + input;
                 } else {
                     return input + symbol;

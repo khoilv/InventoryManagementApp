@@ -369,10 +369,15 @@
         'id', // a passed-in parameter
         'deleteType', // a passed-in parameter
         function ($scope, $uibModalInstance, $log, dbService, id, deleteType) {
+            $scope.id = id;
             $scope.itemType = deleteType;
+            
             $scope.cancel = function () {
                 $uibModalInstance.dismiss('cancel');
             };
+            $scope.delete = function () {
+                $uibModalInstance.close($scope.id);
+            }
         }
     ]);
 

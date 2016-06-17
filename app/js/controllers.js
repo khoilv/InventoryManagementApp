@@ -259,7 +259,6 @@
             };
 
             $scope.editVendor = function (vendorId) {
-                $log.info('VendorID = ' + vendorId);
                 var modalInstance = $uibModal.open({
                     animation: true,
                     templateUrl: 'partials/dashboard/popup/vendor.html',

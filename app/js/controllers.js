@@ -161,7 +161,7 @@
             $scope.activeVendorList = '';
 
             // get and show all products
-            showItemList();
+            showItemList('product');
 
             $scope.onTabChange = function (tab) {
                 if (tab == 'product') {
@@ -188,7 +188,7 @@
                     resolve: {} // resolve (Type: Object) - Members that will be resolved and passed to the controller as locals;
                 });
                 modalInstance.result.then(function (item) { // function called when modal closed
-                    dbService.upsertItem(item, OBJECT_STORE_NAME_PRODUCT, showItemList);
+                    dbService.upsertItem(item, OBJECT_STORE_NAME_PRODUCT, showItemList.bind(this, 'product'));
                 }, function () { // function called when modal rejected
                     $log.info('Add product modal dismissed at: ' + new Date());
                 });
@@ -207,7 +207,7 @@
                     }
                 });
                 modalInstance.result.then(function (item) { // function called when modal closed
-                    dbService.upsertItem(item, OBJECT_STORE_NAME_PRODUCT, showItemList);
+                    dbService.upsertItem(item, OBJECT_STORE_NAME_PRODUCT, showItemList.bind(this, 'product'));
                 }, function () { // function called when modal rejected
                     $log.info('Edit product modal dismissed at: ' + new Date());
                 });
@@ -229,7 +229,7 @@
                     }
                 });
                 modalInstance.result.then(function (id) { // function called when modal closed
-                    dbService.deleteItem(id, OBJECT_STORE_NAME_PRODUCT, showItemList);
+                    dbService.deleteItem(id, OBJECT_STORE_NAME_PRODUCT, showItemList.bind(this, 'product'));
                 }, function () { // function called when modal rejected
                     $log.info('Delete product modal dismissed at: ' + new Date());
                 });
@@ -252,22 +252,28 @@
                     }
                 });
                 modalInstance.result.then(function (vendor) {
-
+                    dbService.upsertItem(vendor, OBJECT_STORE_NAME_VENDOR, showItemList.bind(this, 'vendor'));
                 }, function () {
                     $log.info('Vendor edit modal dismissed at: ' + new Date());
                 });
             };
 
-            function showItemList() {
-                dbService.getAll(OBJECT_STORE_NAME_PRODUCT, function (items) {
-                    var sumPrice = 0, total = items.length;
-                    angular.forEach(items, function (item) {
-                        sumPrice += parseFloat(item.price);
+            function showItemList(type) {
+                if (type == 'product') {
+                    dbService.getAll(OBJECT_STORE_NAME_PRODUCT, function (items) {
+                        var sumPrice = 0, total = items.length;
+                        angular.forEach(items, function (item) {
+                            sumPrice += parseFloat(item.price);
+                        });
+                        $scope.totalItems = total;
+                        $scope.averagePrice = sumPrice / total;
+                        $scope.items = $scope.formatData(items);
                     });
-                    $scope.totalItems = total;
-                    $scope.averagePrice = sumPrice / total;
-                    $scope.items = $scope.formatData(items);
-                });
+                } else if (type == 'vendor') {
+                    dbService.getAll(OBJECT_STORE_NAME_VENDOR, function (items) {
+                        $scope.items = items;
+                    });
+                }
             }
         }
     ]);

@@ -4,9 +4,7 @@
     <list default="true" id="db49df35-445e-45ab-988d-2152e26b9225" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/controllers.js" afterPath="$PROJECT_DIR$/app/js/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/services.js" afterPath="$PROJECT_DIR$/app/js/services.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/partials/dashboard/popup/vendor.html" afterPath="$PROJECT_DIR$/app/partials/dashboard/popup/vendor.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/partials/dashboard/vendor_list.html" afterPath="$PROJECT_DIR$/app/partials/dashboard/vendor_list.html" />
     </list>
     <ignored path="InventoryManagementApp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,13 +26,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="controllers.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="controllers.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/js/controllers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="997">
-              <caret line="241" column="29" selection-start-line="241" selection-start-column="19" selection-end-line="241" selection-end-column="29" />
+            <state relative-caret-position="322">
+              <caret line="259" column="0" selection-start-line="259" selection-start-column="0" selection-end-line="259" selection-end-column="0" />
               <folding>
-                <element signature="e#14737#14828#0" expanded="false" />
+                <element signature="e#15220#15311#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -70,7 +68,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="vendor.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="vendor.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/partials/dashboard/popup/vendor.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="621">
@@ -179,9 +177,9 @@
         <option value="$PROJECT_DIR$/app/partials/dashboard/product_list.html" />
         <option value="$PROJECT_DIR$/app/partials/dashboard/popup/product.html" />
         <option value="$PROJECT_DIR$/app/js/services.js" />
-        <option value="$PROJECT_DIR$/app/js/controllers.js" />
         <option value="$PROJECT_DIR$/app/partials/dashboard/vendor_list.html" />
         <option value="$PROJECT_DIR$/app/partials/dashboard/popup/vendor.html" />
+        <option value="$PROJECT_DIR$/app/js/controllers.js" />
       </list>
     </option>
   </component>
@@ -438,14 +436,7 @@
       <workItem from="1466017163149" duration="3224000" />
       <workItem from="1466046362710" duration="16007000" />
       <workItem from="1466088600097" duration="8386000" />
-      <workItem from="1466129831751" duration="11426000" />
-    </task>
-    <task id="LOCAL-00031" summary="Commit code">
-      <created>1465809328185</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1465809328185</updated>
+      <workItem from="1466129831751" duration="12224000" />
     </task>
     <task id="LOCAL-00032" summary="Commit code">
       <created>1465831958295</created>
@@ -783,11 +774,18 @@
       <option name="project" value="LOCAL" />
       <updated>1466147957811</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="Commit code">
+      <created>1466148815611</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1466148815611</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101795000" />
+    <option name="totallyTimeSpent" value="102593000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1911" y="-9" width="2578" height="1408" extended-state="6" />
@@ -884,7 +882,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#14737#14828#0" expanded="false" />
+            <element signature="e#15220#15311#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1051,16 +1049,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/controllers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="997">
-          <caret line="241" column="29" selection-start-line="241" selection-start-column="19" selection-end-line="241" selection-end-column="29" />
-          <folding>
-            <element signature="e#14737#14828#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/partials/dashboard/vendor_list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
@@ -1085,6 +1073,16 @@
           <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
           <folding>
             <element signature="n#style#0;n#div#1;n#form#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/controllers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="259" column="0" selection-start-line="259" selection-start-column="0" selection-end-line="259" selection-end-column="0" />
+          <folding>
+            <element signature="e#15220#15311#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -237,10 +237,12 @@
     imControllers.controller('PopupAddProductCtrl', [
         '$scope',
         '$uibModalInstance',
+        '$log',
+        'convertDate',
         'dbService',
         'OBJECT_STORE_NAME_VENDOR',
         'OBJECT_STORE_NAME_TYPE',
-        function ($scope, $uiModalInstance, dbService, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
+        function ($scope, $uiModalInstance, $log, convertDate, dbService, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
             $scope.vendors = null;
             $scope.types = null;
             $scope.item = {
@@ -254,8 +256,21 @@
                 color: null,
                 release_date: null,
                 published: 0,
-                photo: null,
+                photo: 'img/product/p-img1.jpg',
                 created_date: null
+            };
+
+            $scope.dateOptions = {
+                formatYear: 'yy',
+                maxDate: new Date(2020, 5, 22),
+                minDate: new Date(2000, 1, 1),
+                startingDay: 1
+            };
+            $scope.popup = {
+                opened: false
+            };
+            $scope.open = function () {
+                $scope.popup.opened = true;
             };
 
             dbService.getAll(OBJECT_STORE_NAME_VENDOR, function (vendors) {

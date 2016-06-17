@@ -49,7 +49,6 @@
         'ORDER_BY_ASC',
         'ORDER_BY_DESC',
         function ($scope, $filter, dbService, ITEM_TYPE_PRODUCT, ITEM_TYPE_VENDOR, ITEM_TYPE_TYPE, ORDER_BY_NONE, ORDER_BY_ASC, ORDER_BY_DESC) {
-            //dbService.initDb();
             $scope.active = 'active';
             $scope.items = null;
             $scope.latestItems = null;
@@ -59,6 +58,8 @@
                 status: [ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE, ORDER_BY_NONE],
                 priority: []
             };
+
+            //dbService.initDb();
 
             // get and show all products
             dbService.getAllPublishedItems(function (items) {
@@ -188,6 +189,7 @@
                     resolve: {} // resolve (Type: Object) - Members that will be resolved and passed to the controller as locals;
                 });
                 modalInstance.result.then(function (item) { // function called when modal closed
+                    $log.info(item);
                     dbService.upsertItem(item, ITEM_TYPE_PRODUCT, showItemList.bind(this, ITEM_TYPE_PRODUCT));
                 }, function () { // function called when modal rejected
                     $log.info('Add Product modal dismissed at: ' + new Date());
@@ -248,6 +250,7 @@
                     }
                 });
                 modalInstance.result.then(function (vendor) {
+                    $log.info(vendor);
                     dbService.upsertItem(vendor, ITEM_TYPE_VENDOR, showItemList.bind(this, ITEM_TYPE_VENDOR));
                 }, function () {
                     $log.info('Add Vendor modal dismissed at: ' + new Date());
@@ -255,6 +258,7 @@
             };
 
             $scope.editVendor = function (vendorId) {
+                $log.info('VendorID = ' + vendorId);
                 var modalInstance = $uibModal.open({
                     animation: true,
                     templateUrl: 'partials/dashboard/popup/vendor.html',
@@ -308,7 +312,6 @@
             $scope.vendors = null;
             $scope.types = null;
             $scope.item = {
-                id: 0,
                 name: null,
                 vendor_id: null,
                 type_id: null,
@@ -438,7 +441,6 @@
         'ITEM_TYPE_VENDOR',
         function ($scope, $uibModalInstance, $log, dbService, vendorId, ITEM_TYPE_VENDOR) {
             $scope.vendor = {
-                id: vendorId,
                 name: null,
                 logo: 'img/logo/logo1.jpg'
             };
@@ -452,7 +454,6 @@
                 $uibModalInstance.dismiss('cancel');
             };
             $scope.submitVendor = function () {
-                $log.info($scope.vendor);
                 $uibModalInstance.close($scope.vendor);
             };
         }

@@ -4,27 +4,30 @@
 
     var imServices = angular.module('imServices', []);
 
-    imServices.factory('convertDate', [function () {
-        return function (strDate) {
+    imServices.factory('utilService', [function () {
+        var convertDate = function (strDate) {
             return new Date(strDate).getTime(); // new Date(strDate).getTime() / 1000;
-        }
-    }]);
+        };
 
-    imServices.factory('formatDate', function () {
-        return function (timestamp) {
+        var formatDate = function (timestamp) {
             var options = {year: 'numeric', month: 'numeric', day: 'numeric'};
             var d = new Date(timestamp * 1000);
             return d.toLocaleDateString('en-US', options);
+        };
+
+        return {
+            convertDate: convertDate,
+            formatDate: formatDate
         }
-    });
+    }]);
 
     imServices.factory('dbService', [
         '$indexedDB',
-        'convertDate',
+        'utilService',
         'OBJECT_STORE_NAME_PRODUCT',
         'OBJECT_STORE_NAME_VENDOR',
         'OBJECT_STORE_NAME_TYPE',
-        function ($indexedDB, convertDate, OBJECT_STORE_NAME_PRODUCT, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
+        function ($indexedDB, utilService, OBJECT_STORE_NAME_PRODUCT, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
             var initDb = function () {
                 // initialize types
                 var types = [
@@ -64,10 +67,10 @@
                         "price": "18",
                         "weight": "200",
                         "color": "Black",
-                        "release_date": convertDate('06/10/2016'),
+                        "release_date": utilService.convertDate('06/10/2016'),
                         "published": true,
                         "photo": "img/product/p-img1.jpg",
-                        "created_date": convertDate('06/10/2016')
+                        "created_date": utilService.convertDate('06/10/2016')
                     },
                     {
                         "name": "Laptop Dell Inspiration 6",
@@ -77,10 +80,10 @@
                         "price": "30",
                         "weight": "200",
                         "color": "White",
-                        "release_date": convertDate('06/12/2016'),
+                        "release_date": utilService.convertDate('06/12/2016'),
                         "published": false,
                         "photo": "img/product/p-img2.jpg",
-                        "created_date": convertDate('06/06/2016')
+                        "created_date": utilService.convertDate('06/06/2016')
                     },
                     {
                         "name": "Laptop HP Envy 11",
@@ -90,10 +93,10 @@
                         "price": "95",
                         "weight": "200",
                         "color": "White",
-                        "release_date": convertDate('06/08/2016'),
+                        "release_date": utilService.convertDate('06/08/2016'),
                         "published": true,
                         "photo": "img/product/p-img3.jpg",
-                        "created_date": convertDate('06/11/2016')
+                        "created_date": utilService.convertDate('06/11/2016')
                     },
                     {
                         "name": "Laptop HP Envy 8",
@@ -103,10 +106,10 @@
                         "price": "52",
                         "weight": "200",
                         "color": "Black",
-                        "release_date": convertDate('05/28/2016'),
+                        "release_date": utilService.convertDate('05/28/2016'),
                         "published": true,
                         "photo": "img/product/p-img4.jpg",
-                        "created_date": convertDate('06/08/2016')
+                        "created_date": utilService.convertDate('06/08/2016')
                     },
                     {
                         "name": "Laptop HP Envy 9",
@@ -116,10 +119,10 @@
                         "price": "18",
                         "weight": "200",
                         "color": "Black",
-                        "release_date": convertDate('06/01/2016'),
+                        "release_date": utilService.convertDate('06/01/2016'),
                         "published": true,
                         "photo": "img/product/p-img4.jpg",
-                        "created_date": convertDate('06/09/2016')
+                        "created_date": utilService.convertDate('06/09/2016')
                     },
                     {
                         "name": "Laptop HP Envy 7",
@@ -129,10 +132,10 @@
                         "price": "27.25",
                         "weight": "200",
                         "color": "Black",
-                        "release_date": convertDate('05/30/2016'),
+                        "release_date": utilService.convertDate('05/30/2016'),
                         "published": true,
                         "photo": "img/product/p-img4.jpg",
-                        "created_date": convertDate('06/07/2016')
+                        "created_date": utilService.convertDate('06/07/2016')
                     }
                 ];
                 $indexedDB.openStore(OBJECT_STORE_NAME_PRODUCT, function (store) {
@@ -204,7 +207,7 @@
                 });
             };
 
-            var updateItem = function (item, callback) {
+            var upsertItem = function (item, callback) {
                 $indexedDB.openStore(OBJECT_STORE_NAME_PRODUCT, function (store) {
                     store.upsert(item).then(function (e) {
                         if (typeof callback === 'function') {
@@ -257,7 +260,7 @@
                 searchPublishedItems: searchPublishedItems,
                 getLatestPublishedItems: getLatestPublishedItems,
                 getItem: getItem,
-                updateItem: updateItem,
+                upsertItem: upsertItem,
                 deleteItem: deleteItem,
                 getAll: getAll,
                 getVendor: getVendor,

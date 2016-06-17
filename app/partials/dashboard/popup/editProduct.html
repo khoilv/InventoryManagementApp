@@ -7,14 +7,14 @@
         <div class="form-group">
             <label class="control-label col-sm-3">Item name:</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" data-ng-model="item.name" placeholder="Enter item name">
+                <input type="text" class="form-control" data-ng-model="item.name" placeholder="Enter item name" data-ng-required="true">
             </div>
             <div class="col-sm-1"><span></span></div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-3">Vendor:</label>
             <div class="col-sm-8">
-                <select class="form-control" data-ng-model="item.vendor_id" data-ng-options="vendor.id as vendor.name for vendor in vendors">
+                <select class="form-control" data-ng-model="item.vendor_id" data-ng-options="vendor.id as vendor.name for vendor in vendors" data-ng-required="true">
                     <option value="">---Please select---</option>
                 </select>
             </div>
@@ -23,7 +23,7 @@
         <div class="form-group">
             <label class="control-label col-sm-3">Type:</label>
             <div class="col-sm-8">
-                <select class="form-control" data-ng-model="item.type_id" data-ng-options="type.id as type.name for type in types">
+                <select class="form-control" data-ng-model="item.type_id" data-ng-options="type.id as type.name for type in types" data-ng-required="true">
                     <option value="">---Please select---</option>
                 </select>
             </div>
@@ -32,28 +32,28 @@
         <div class="form-group">
             <label class="control-label col-sm-3">Serial number:</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" data-ng-model="item.serial_number" placeholder="Enter serial number">
+                <input type="text" class="form-control" data-ng-model="item.serial_number" placeholder="Enter serial number" data-ng-required="true">
             </div>
             <div class="col-sm-1"><span></span></div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-3">Price:</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" data-ng-model="item.price" placeholder="Enter price">
+                <input type="text" class="form-control" data-ng-model="item.price" placeholder="Enter price" data-ng-required="true">
             </div>
             <p class="col-sm-1">$</p>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-3">Weight:</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" data-ng-model="item.weight" placeholder="Enter weight">
+                <input type="text" class="form-control" data-ng-model="item.weight" placeholder="Enter weight" data-ng-required="true">
             </div>
             <p class="col-sm-1">g</p>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-3">Color:</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" data-ng-model="item.color" placeholder="Enter color">
+                <input type="text" class="form-control" data-ng-model="item.color" placeholder="Enter color" data-ng-required="true">
             </div>
             <div class="col-sm-1"><span></span></div>
         </div>

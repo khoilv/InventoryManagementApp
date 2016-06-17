@@ -42,14 +42,13 @@
         '$scope',
         '$filter',
         'dbService',
-        'formatDate',
         'OBJECT_STORE_NAME_PRODUCT',
         'OBJECT_STORE_NAME_VENDOR',
         'OBJECT_STORE_NAME_TYPE',
         'ORDER_BY_NONE',
         'ORDER_BY_ASC',
         'ORDER_BY_DESC',
-        function ($scope, $filter, dbService, formatDate, OBJECT_STORE_NAME_PRODUCT, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE, ORDER_BY_NONE, ORDER_BY_ASC, ORDER_BY_DESC) {
+        function ($scope, $filter, dbService, OBJECT_STORE_NAME_PRODUCT, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE, ORDER_BY_NONE, ORDER_BY_ASC, ORDER_BY_DESC) {
             //dbService.initDb();
             $scope.active = 'active';
             $scope.items = null;
@@ -149,11 +148,12 @@
         '$scope',
         '$uibModal',
         '$log',
+        'utilService',
         'dbService',
         'OBJECT_STORE_NAME_PRODUCT',
         'OBJECT_STORE_NAME_VENDOR',
         'OBJECT_STORE_NAME_TYPE',
-        function ($scope, $uibModal, $log, dbService, OBJECT_STORE_NAME_PRODUCT, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
+        function ($scope, $uibModal, $log, utilService, dbService, OBJECT_STORE_NAME_PRODUCT, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
             $scope.totalItems = null;
             $scope.averagePrice = null;
             $scope.items = null;
@@ -189,6 +189,7 @@
                 });
 
                 modalInst.result.then(function (newItem) { // function called when modal closed
+                    newItem.release_date = utilService.convertDate(newItem.release_date);
                     $log.info(newItem);
                     $scope.item = newItem;
                 }, function () { // function called when modal rejected
@@ -211,7 +212,7 @@
 
                 modalInst.result.then(function (item) { // function called when modal closed
                     //$log.info(item);
-                    dbService.updateItem(item, showItemList);
+                    dbService.upsertItem(item, showItemList);
                 }, function () { // function called when modal rejected
                     $log.info('Modal dismissed at: ' + new Date());
                 });
@@ -238,11 +239,11 @@
         '$scope',
         '$uibModalInstance',
         '$log',
-        'convertDate',
+        'utilService',
         'dbService',
         'OBJECT_STORE_NAME_VENDOR',
         'OBJECT_STORE_NAME_TYPE',
-        function ($scope, $uiModalInstance, $log, convertDate, dbService, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
+        function ($scope, $uiModalInstance, $log, utilService, dbService, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
             $scope.vendors = null;
             $scope.types = null;
             $scope.item = {
@@ -255,9 +256,9 @@
                 weight: null,
                 color: null,
                 release_date: null,
-                published: 0,
+                published: false,
                 photo: 'img/product/p-img1.jpg',
-                created_date: null
+                created_date: utilService.convertDate(new Date())
             };
 
             $scope.dateOptions = {
@@ -296,12 +297,12 @@
         '$scope',
         '$uibModalInstance',
         '$log',
-        'convertDate',
+        'utilService',
         'dbService',
         'itemId',
         'OBJECT_STORE_NAME_VENDOR',
         'OBJECT_STORE_NAME_TYPE',
-        function ($scope, $uiModalInstance, $log, convertDate, dbService, itemId, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
+        function ($scope, $uiModalInstance, $log, utilService, dbService, itemId, OBJECT_STORE_NAME_VENDOR, OBJECT_STORE_NAME_TYPE) {
             $scope.vendors = null;
             $scope.types = null;
             $scope.item = null;
@@ -330,7 +331,7 @@
             });
 
             $scope.submitProduct = function () {
-                $scope.item.release_date = convertDate($scope.item.release_date);
+                $scope.item.release_date = utilService.convertDate($scope.item.release_date);
                 $uiModalInstance.close($scope.item);
             };
             $scope.cancel = function () {

@@ -8,7 +8,7 @@
         <th>Type</th>
         <th>Serial number</th>
         <th>Price</th>
-        <th>Weight</th>
+        <th>Weight (g)</th>
         <th>Color</th>
         <th>Release date</th>
         <th>Published</th>
@@ -24,7 +24,7 @@
         <td>{{item.type_name}}</td>
         <td>{{item.serial_number}}</td>
         <td>{{item.price | currency}}</td>
-        <td>{{item.weight | weight: 'g'}}</td>
+        <td>{{item.weight}}</td>
         <td>{{item.color}}</td>
         <td>{{item.release_date | date: 'MM/dd/yyyy'}}</td>
         <td>{{item.published == true ? 'yes' : 'no'}}</td>

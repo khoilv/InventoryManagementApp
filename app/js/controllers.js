@@ -217,11 +217,14 @@
                 var modalInstance = $uibModal.open({
                     animation: true,
                     templateUrl: 'partials/dashboard/popup/delete.html',
-                    controller: 'PopupDeleteProductCtrl',
+                    controller: 'PopupDeleteCtrl',
                     size: 'lg',
                     resolve: {
                         id: function () {
                             return id;
+                        },
+                        deleteType: function () {
+                            return 'product';
                         }
                     }
                 });
@@ -358,14 +361,15 @@
     /**
      * PopupDeleteProduct controller
      */
-    imControllers.controller('PopupDeleteProductCtrl', [
+    imControllers.controller('PopupDeleteCtrl', [
         '$scope',
         '$uibModalInstance',
         '$log',
         'dbService',
-        'id', // pass in a parameter
-        function ($scope, $uibModalInstance, $log, dbService, id) {
-            $scope.itemType = 'product';
+        'id', // a passed-in parameter
+        'deleteType', // a passed-in parameter
+        function ($scope, $uibModalInstance, $log, dbService, id, deleteType) {
+            $scope.itemType = deleteType;
             $scope.cancel = function () {
                 $uibModalInstance.dismiss('cancel');
             };

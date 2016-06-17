@@ -191,7 +191,7 @@
                 });
                 modalInstance.result.then(function (item) { // function called when modal closed
                     $log.info(item);
-                    dbService.upsertItem(item, ITEM_TYPE_PRODUCT, showItemList.bind(this, ITEM_TYPE_PRODUCT));
+                    dbService.upsertItem(item, ITEM_TYPE_PRODUCT, showItemList.bind(null, ITEM_TYPE_PRODUCT));
                 }, function () { // function called when modal rejected
                     $log.info('Add Product modal dismissed at: ' + new Date());
                 });
@@ -210,7 +210,7 @@
                     }
                 });
                 modalInstance.result.then(function (item) { // function called when modal closed
-                    dbService.upsertItem(item, ITEM_TYPE_PRODUCT, showItemList.bind(this, ITEM_TYPE_PRODUCT));
+                    dbService.upsertItem(item, ITEM_TYPE_PRODUCT, showItemList.bind(null, ITEM_TYPE_PRODUCT));
                 }, function () { // function called when modal rejected
                     $log.info('Edit Product modal dismissed at: ' + new Date());
                 });
@@ -232,7 +232,7 @@
                     }
                 });
                 modalInstance.result.then(function (id) { // function called when modal closed
-                    dbService.deleteItem(id, ITEM_TYPE_PRODUCT, showItemList.bind(this, ITEM_TYPE_PRODUCT));
+                    dbService.deleteItem(id, ITEM_TYPE_PRODUCT, showItemList.bind(null, ITEM_TYPE_PRODUCT));
                 }, function () { // function called when modal rejected
                     $log.info('Delete Product modal dismissed at: ' + new Date());
                 });
@@ -252,7 +252,7 @@
                 });
                 modalInstance.result.then(function (vendor) {
                     $log.info(vendor);
-                    dbService.upsertItem(vendor, ITEM_TYPE_VENDOR, showItemList.bind(this, ITEM_TYPE_VENDOR));
+                    dbService.upsertItem(vendor, ITEM_TYPE_VENDOR, showItemList.bind(null, ITEM_TYPE_VENDOR));
                 }, function () {
                     $log.info('Add Vendor modal dismissed at: ' + new Date());
                 });
@@ -272,7 +272,7 @@
                     }
                 });
                 modalInstance.result.then(function (vendor) {
-                    dbService.upsertItem(vendor, ITEM_TYPE_VENDOR, showItemList.bind(this, ITEM_TYPE_VENDOR));
+                    dbService.upsertItem(vendor, ITEM_TYPE_VENDOR, showItemList.bind(null, ITEM_TYPE_VENDOR));
                 }, function () {
                     $log.info('Edit Vendor modal dismissed at: ' + new Date());
                 });
@@ -445,11 +445,9 @@
                 name: null,
                 logo: 'img/logo/logo1.jpg'
             };
-            if (vendorId > 0) {
-                dbService.getItem(vendorId, ITEM_TYPE_VENDOR, function (vendor) {
-                    $scope.vendor = vendor;
-                });
-            }
+            dbService.getItem(vendorId, ITEM_TYPE_VENDOR, function (vendor) {
+                $scope.vendor = vendor;
+            });
 
             $scope.cancel = function () {
                 $uibModalInstance.dismiss('cancel');

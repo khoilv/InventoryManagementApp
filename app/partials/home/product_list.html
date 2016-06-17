@@ -38,7 +38,7 @@
             </div>
         </th>
         <th>
-            Weight
+            Weight (g)
             <div class="menu-wrapper" data-ng-click="sortItems('weight');">
                 <span ng-if="hasMenuUp('weight');" class="glyphicon glyphicon-menu-up mt5"></span>
                 <span ng-if="hasMenuDown('weight');" class="glyphicon glyphicon-menu-down"></span>
@@ -74,7 +74,7 @@
         <td>{{item.type_name}}</td>
         <td>{{item.serial_number}}</td>
         <td>{{item.price | currency}}</td>
-        <td>{{item.weight | weight: 'g'}}</td>
+        <td>{{item.weight}}</td>
         <td>{{item.color}}</td>
         <td>{{item.release_date | date: 'MM/dd/yyyy'}}</td>
         <td><img ng-src="{{item.photo}}"></td>

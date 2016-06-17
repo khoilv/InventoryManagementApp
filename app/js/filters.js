@@ -10,7 +10,7 @@
                 return w;
             } else {
                 if (unit === undefined) unit = 'g';
-                return w + ' ' + unit;
+                return w + unit;
             }
         }
     });

@@ -188,10 +188,8 @@
                     resolve: {}
                 });
 
-                modalInst.result.then(function (newItem) { // function called when modal closed
-                    newItem.release_date = utilService.convertDate(newItem.release_date);
-                    $log.info(newItem);
-                    $scope.item = newItem;
+                modalInst.result.then(function (item) { // function called when modal closed
+                    dbService.upsertItem(item, showItemList);
                 }, function () { // function called when modal rejected
                     $log.info('Modal dismissed at: ' + new Date());
                 });
@@ -211,7 +209,6 @@
                 });
 
                 modalInst.result.then(function (item) { // function called when modal closed
-                    //$log.info(item);
                     dbService.upsertItem(item, showItemList);
                 }, function () { // function called when modal rejected
                     $log.info('Modal dismissed at: ' + new Date());
@@ -282,6 +279,7 @@
             });
 
             $scope.submitProduct = function () {
+                $scope.item.release_date = utilService.convertDate($scope.item.release_date);
                 $uiModalInstance.close($scope.item);
             };
             $scope.cancel = function () {

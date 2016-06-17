@@ -227,7 +227,7 @@
                             return id;
                         },
                         deleteType: function () {
-                            return 'product';
+                            return ITEM_TYPE_PRODUCT;
                         }
                     }
                 });
@@ -274,6 +274,28 @@
                     dbService.upsertItem(vendor, ITEM_TYPE_VENDOR, showItemList.bind(null, ITEM_TYPE_VENDOR));
                 }, function () {
                     $log.info('Edit Vendor modal dismissed at: ' + new Date());
+                });
+            };
+
+            $scope.deleteVendor = function (id) {
+                var modalInstance = $uibModal.open({
+                    animation: true,
+                    templateUrl: 'partials/dashboard/popup/delete.html',
+                    controller: 'PopupDeleteCtrl',
+                    size: 'lg',
+                    resolve: {
+                        id: function () {
+                            return id;
+                        },
+                        deleteType: function () {
+                            return ITEM_TYPE_VENDOR;
+                        }
+                    }
+                });
+                modalInstance.result.then(function (id) { // function called when modal closed
+                    dbService.deleteItem(id, ITEM_TYPE_VENDOR, showItemList.bind(null, ITEM_TYPE_VENDOR));
+                }, function () { // function called when modal rejected
+                    $log.info('Delete Vendor modal dismissed at: ' + new Date());
                 });
             };
 

@@ -188,7 +188,7 @@
                     resolve: {} // resolve (Type: Object) - Members that will be resolved and passed to the controller as locals;
                 });
                 modalInstance.result.then(function (item) { // function called when modal closed
-                    dbService.upsertItem(item, ITEM_TYPE_PRODUCT, showItemList.bind(this, 'product'));
+                    dbService.upsertItem(item, ITEM_TYPE_PRODUCT, showItemList.bind(this, ITEM_TYPE_PRODUCT));
                 }, function () { // function called when modal rejected
                     $log.info('Add Product modal dismissed at: ' + new Date());
                 });
@@ -207,7 +207,7 @@
                     }
                 });
                 modalInstance.result.then(function (item) { // function called when modal closed
-                    dbService.upsertItem(item, ITEM_TYPE_PRODUCT, showItemList.bind(this, 'product'));
+                    dbService.upsertItem(item, ITEM_TYPE_PRODUCT, showItemList.bind(this, ITEM_TYPE_PRODUCT));
                 }, function () { // function called when modal rejected
                     $log.info('Edit Product modal dismissed at: ' + new Date());
                 });
@@ -229,7 +229,7 @@
                     }
                 });
                 modalInstance.result.then(function (id) { // function called when modal closed
-                    dbService.deleteItem(id, ITEM_TYPE_PRODUCT, showItemList.bind(this, 'product'));
+                    dbService.deleteItem(id, ITEM_TYPE_PRODUCT, showItemList.bind(this, ITEM_TYPE_PRODUCT));
                 }, function () { // function called when modal rejected
                     $log.info('Delete Product modal dismissed at: ' + new Date());
                 });
@@ -248,7 +248,7 @@
                     }
                 });
                 modalInstance.result.then(function (vendor) {
-                    dbService.upsertItem(vendor, ITEM_TYPE_VENDOR, showItemList.bind(this, 'vendor'));
+                    dbService.upsertItem(vendor, ITEM_TYPE_VENDOR, showItemList.bind(this, ITEM_TYPE_VENDOR));
                 }, function () {
                     $log.info('Add Vendor modal dismissed at: ' + new Date());
                 });
@@ -267,15 +267,15 @@
                     }
                 });
                 modalInstance.result.then(function (vendor) {
-                    dbService.upsertItem(vendor, ITEM_TYPE_VENDOR, showItemList.bind(this, 'vendor'));
+                    dbService.upsertItem(vendor, ITEM_TYPE_VENDOR, showItemList.bind(this, ITEM_TYPE_VENDOR));
                 }, function () {
                     $log.info('Edit Vendor modal dismissed at: ' + new Date());
                 });
             };
 
             function showItemList(type) {
-                if (type == 'product') {
-                    dbService.getAll(ITEM_TYPE_PRODUCT, function (items) {
+                if (type == ITEM_TYPE_PRODUCT) {
+                    dbService.getAll(type, function (items) {
                         var sumPrice = 0, total = items.length;
                         angular.forEach(items, function (item) {
                             sumPrice += parseFloat(item.price);
@@ -284,8 +284,8 @@
                         $scope.averagePrice = sumPrice / total;
                         $scope.items = $scope.formatData(items);
                     });
-                } else if (type == 'vendor') {
-                    dbService.getAll(ITEM_TYPE_VENDOR, function (items) {
+                } else if (type == ITEM_TYPE_VENDOR) {
+                    dbService.getAll(type, function (items) {
                         $scope.items = items;
                     });
                 }
@@ -437,17 +437,22 @@
         'vendorId', // a passed-in parameter
         'ITEM_TYPE_VENDOR',
         function ($scope, $uibModalInstance, $log, dbService, vendorId, ITEM_TYPE_VENDOR) {
-            $scope.vendorId = vendorId;
-            $scope.vendor = null;
+            $scope.vendor = {
+                id: vendorId,
+                name: null,
+                logo: 'img/logo/logo1.jpg'
+            };
+            if (vendorId > 0) {
+                dbService.getItem(vendorId, ITEM_TYPE_VENDOR, function (vendor) {
+                    $scope.vendor = vendor;
+                });
+            }
 
-            dbService.getItem(vendorId, ITEM_TYPE_VENDOR, function (vendor) {
-                $scope.vendor = vendor;
-            });
-            
             $scope.cancel = function () {
                 $uibModalInstance.dismiss('cancel');
             };
             $scope.submitVendor = function () {
+                $log.info($scope.vendor);
                 $uibModalInstance.close($scope.vendor);
             };
         }

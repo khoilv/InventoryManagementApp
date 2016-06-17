@@ -182,7 +182,7 @@
             $scope.addProduct = function () {
                 var modalInst = $uibModal.open({
                     animation: true,
-                    templateUrl: 'partials/dashboard/popup/addProduct.html',
+                    templateUrl: 'partials/dashboard/popup/product.html',
                     controller: 'PopupAddProductCtrl',
                     size: 'lg',
                     resolve: {}
@@ -200,7 +200,7 @@
             $scope.editProduct = function (itemId) {
                 var modalInst = $uibModal.open({
                     animation: true,
-                    templateUrl: 'partials/dashboard/popup/editProduct.html',
+                    templateUrl: 'partials/dashboard/popup/product.html',
                     controller: 'PopupEditProductCtrl',
                     size: 'lg',
                     resolve: {
